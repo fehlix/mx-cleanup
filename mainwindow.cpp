@@ -429,19 +429,25 @@ void MainWindow::loadSettings()
     ui->radioSaferCache->setChecked(cacheSafer);
     ui->radioAllCache->setChecked(!cacheSafer);
 
-    ui->groupBoxApt->setChecked(value("Apt/AptCleanup", true).toBool());
-    selectRadioButton(ui->groupBoxApt, ui->buttonGroupApt, value("Apt/AptSelection", -1).toInt());
+    const bool aptCleanup = value("Apt/AptCleanup", true).toBool();
+    ui->groupBoxApt->setChecked(aptCleanup);
+    const int aptSelection = aptCleanup ? value("Apt/AptSelection", -1).toInt() : -1;
+    selectRadioButton(ui->groupBoxApt, ui->buttonGroupApt, aptSelection);
     ui->checkPurge->setChecked(value("Apt/AptPurge", false).toBool());
 
     ui->checkFlatpak->setChecked(value("Flatpak/UninstallUnusedRuntimes", false).toBool());
 
-    ui->groupBoxLogs->setChecked(value("Logs/LogsCleanup", true).toBool());
+    const bool logsCleanup = value("Logs/LogsCleanup", true).toBool();
+    ui->groupBoxLogs->setChecked(logsCleanup);
     ui->spinBoxLogs->setValue(value("Logs/LogsOlderThan", 7).toInt());
-    selectRadioButton(ui->groupBoxLogs, ui->buttonGroupLogs, value("Logs/LogsSelection", -1).toInt());
+    const int logsSelection = logsCleanup ? value("Logs/LogsSelection", -1).toInt() : -1;
+    selectRadioButton(ui->groupBoxLogs, ui->buttonGroupLogs, logsSelection);
 
-    ui->groupBoxTrash->setChecked(value("Trash/TrashCleanup", true).toBool());
+    const bool trashCleanup = value("Trash/TrashCleanup", true).toBool();
+    ui->groupBoxTrash->setChecked(trashCleanup);
     ui->spinBoxTrash->setValue(value("Trash/TrashOlderThan", 30).toInt());
-    selectRadioButton(ui->groupBoxTrash, ui->buttonGroupTrash, value("Trash/TrashSelection", -1).toInt());
+    const int trashSelection = trashCleanup ? value("Trash/TrashSelection", -1).toInt() : -1;
+    selectRadioButton(ui->groupBoxTrash, ui->buttonGroupTrash, trashSelection);
 }
 
 void MainWindow::removeKernelPackages(const QStringList &list)
@@ -723,16 +729,19 @@ void MainWindow::saveSettings()
         store.setValue("Folders/CacheOlderThan", ui->spinCache->value());
         store.setValue("Folders/CacheSafer", ui->radioSaferCache->isChecked());
 
-        store.setValue("Apt/AptCleanup", ui->groupBoxApt->isChecked());
-        store.setValue("Apt/AptSelection", ui->buttonGroupApt->checkedId());
+        const bool aptCleanup = ui->groupBoxApt->isChecked();
+        store.setValue("Apt/AptCleanup", aptCleanup);
+        store.setValue("Apt/AptSelection", aptCleanup ? ui->buttonGroupApt->checkedId() : -1);
         store.setValue("Apt/AptPurge", ui->checkPurge->isChecked());
 
-        store.setValue("Logs/LogsSelection", ui->buttonGroupLogs->checkedId());
+        const bool logsCleanup = ui->groupBoxLogs->isChecked();
+        store.setValue("Logs/LogsSelection", logsCleanup ? ui->buttonGroupLogs->checkedId() : -1);
         store.setValue("Logs/LogsOlderThan", ui->spinBoxLogs->value());
-        store.setValue("Logs/LogsCleanup", ui->groupBoxLogs->isChecked());
+        store.setValue("Logs/LogsCleanup", logsCleanup);
 
-        store.setValue("Trash/TrashCleanup", ui->groupBoxTrash->isChecked());
-        store.setValue("Trash/TrashSelection", ui->buttonGroupTrash->checkedId());
+        const bool trashCleanup = ui->groupBoxTrash->isChecked();
+        store.setValue("Trash/TrashCleanup", trashCleanup);
+        store.setValue("Trash/TrashSelection", trashCleanup ? ui->buttonGroupTrash->checkedId() : -1);
         store.setValue("Trash/TrashOlderThan", ui->spinBoxTrash->value());
 
         store.setValue("Flatpak/FlatpakCleanup", ui->groupBoxFlatpak->isChecked());
@@ -790,10 +799,10 @@ void MainWindow::saveSettings()
 
 void MainWindow::selectRadioButton(QGroupBox *groupbox, const QButtonGroup *group, int id)
 {
-    if (groupbox) {
-        groupbox->setChecked(id != -1);
-    }
     if (id != -1) {
+        if (groupbox) {
+            groupbox->setChecked(true);
+        }
         auto *selectedButton = group->button(id);
         if (selectedButton) {
             selectedButton->setChecked(true);
