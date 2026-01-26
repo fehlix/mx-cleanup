@@ -555,7 +555,7 @@ void MainWindow::removeKernelPackages(const QStringList &list)
                         + R"( | tr '\n' ' ')");
     }
 
-    QString helper {"/usr/lib/" + QApplication::applicationName() + "/helper-terminal"};
+    QString helper {"/usr/lib/" + QApplication::applicationName() + "/helper-terminal-keep-open"};
     QStringList packages;
     packages << headers_installed << list;
     if (!common.isEmpty()) {
@@ -563,8 +563,8 @@ void MainWindow::removeKernelPackages(const QStringList &list)
     }
     
     QString terminalCmd
-        = QString("%1 apt-get purge -y %2; apt-get install -f -y; echo; read -n1 -srp \"%3\"")
-              .arg(rmOldVersions, packages.join(' '), tr("Press any key to close"));
+        = QString("%1 apt-get purge -y %2; apt-get install -f -y")
+              .arg(rmOldVersions, packages.join(' '));
     QProcess terminalProc;
     terminalProc.start("x-terminal-emulator", {"-e", "pkexec", helper, terminalCmd});
     terminalProc.waitForFinished();
@@ -1372,9 +1372,8 @@ void MainWindow::pushRTLremove_clicked()
         return;
     }
 
-    QString helper {"/usr/lib/" + QApplication::applicationName() + "/helper-terminal"};
-    QString terminalCmd
-        = QString("apt-get purge -y %1; apt-get install -f -y; echo; read -n1 -srp \"%2\"").arg(dumpList, tr("Press any key to close"));
+    QString helper {"/usr/lib/" + QApplication::applicationName() + "/helper-terminal-keep-open"};
+    QString terminalCmd = QString("apt-get purge -y %1; apt-get install -f -y").arg(dumpList);
     QProcess terminalProc;
     terminalProc.start("x-terminal-emulator", {"-e", "pkexec", helper, terminalCmd});
     terminalProc.waitForFinished();
