@@ -1,4 +1,4 @@
-mx-cleanup (26.01.3) mx; urgency=medium
+mx-cleanup (26.01.4) mx; urgency=medium
 
   * Improve purge safety
   * Fix Terminology closing without a prompt
