@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=dialog
 
 # Run the command passed as a single string argument
-bash -c -- "$1"
+bash -c "$1"
 EXIT_CODE=$?
 
 # Always show result and wait for user input

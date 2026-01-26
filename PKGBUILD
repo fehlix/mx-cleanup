@@ -36,7 +36,6 @@ package() {
 
     install -dm755 "${pkgdir}/usr/lib/mx-cleanup"
     install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-cleanup/helper"
-    install -Dm755 scripts/helper-terminal "${pkgdir}/usr/lib/mx-cleanup/helper-terminal"
     install -Dm755 scripts/helper-terminal-keep-open "${pkgdir}/usr/lib/mx-cleanup/helper-terminal-keep-open"
 
     install -Dm644 scripts/org.mxlinux.pkexec.mx-cleanup-helper.policy \
