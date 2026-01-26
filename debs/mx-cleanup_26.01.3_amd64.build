@@ -1,0 +1,166 @@
+ dpkg-buildpackage -us -uc -ui
+dpkg-buildpackage: info: source package mx-cleanup
+dpkg-buildpackage: info: source version 26.01.3
+dpkg-buildpackage: info: source distribution mx
+dpkg-buildpackage: info: source changed by Adrian <adrian@mxlinux.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ debian/rules clean
+dh clean --buildsystem=cmake+ninja --no-automatic-dbgsym
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+dh_auto_clean
+rm -rf build/
+rm -f translations/*.qm
+make[1]: Leaving directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+   dh_autoreconf_clean -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_clean -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+ dpkg-source -b .
+dpkg-source: info: using source format '3.0 (native)'
+dpkg-source: info: building mx-cleanup in mx-cleanup_26.01.3.tar.xz
+dpkg-source: info: building mx-cleanup in mx-cleanup_26.01.3.dsc
+ debian/rules binary
+dh binary --buildsystem=cmake+ninja --no-automatic-dbgsym
+   dh_update_autotools_config -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_autoreconf -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   debian/rules override_dh_auto_configure
+make[1]: Entering directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+dh_auto_configure -- \
+	-G Ninja \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd obj-x86_64-linux-gnu && DEB_PYTHON_INSTALL_LAYOUT=deb PKG_CONFIG=/usr/bin/pkg-config cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_INSTALL_RUNSTATEDIR=/run -GNinja -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_LIBDIR=lib/x86_64-linux-gnu -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+-- Using version from debian/changelog: 26.01.3
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+-- Found WrapOpenGL: TRUE
+-- Could NOT find XKB (missing: XKB_LIBRARY XKB_INCLUDE_DIR) (Required is at least version "0.5.0")
+-- Found WrapVulkanHeaders: /usr/include
+-- Configuring done (0.8s)
+-- Generating done (0.1s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_EXPORT_NO_PACKAGE_REGISTRY
+    CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY
+    FETCHCONTENT_FULLY_DISCONNECTED
+
+
+-- Build files have been written to: /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu
+make[1]: Leaving directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+   dh_auto_build -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+	cd obj-x86_64-linux-gnu && LC_ALL=C.UTF-8 ninja -j8 -v
+[1/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_da.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_da.qm
+[2/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_cs.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_cs.qm
+[3/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_de.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_de.qm
+[4/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_ca.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_ca.qm
+[5/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_am.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_am.qm
+[6/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_el.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_el.qm
+[7/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_en.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_en.qm
+[8/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_es.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_es.qm
+[9/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_fa.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_fa.qm
+[10/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_es_ES.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_es_ES.qm
+[11/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_fi.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_fi.qm
+[12/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_fr.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_fr.qm
+[13/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_fil_PH.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_fil_PH.qm
+[14/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_fr_BE.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_fr_BE.qm
+[15/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_gl.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_gl.qm
+[16/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_gl_ES.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_gl_ES.qm
+[17/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_hi.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_hi.qm
+[18/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_hr.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_hr.qm
+[19/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_he_IL.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_he_IL.qm
+[20/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_hu.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_hu.qm
+[21/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_is.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_is.qm
+[22/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_ja.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_ja.qm
+[23/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_ka.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_ka.qm
+[24/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_it.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_it.qm
+[25/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_nb.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_nb.qm
+[26/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_nl.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_nl.qm
+[27/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_lt.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_lt.qm
+[28/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_nl_BE.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_nl_BE.qm
+[29/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_pl.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_pl.qm
+[30/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_pt_BR.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_pt_BR.qm
+[31/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_ru_RU.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_ru_RU.qm
+[32/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_pt.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_pt.qm
+[33/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_ro.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_ro.qm
+[34/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_sk.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_sk.qm
+[35/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_ru.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_ru.qm
+[36/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_sq.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_sq.qm
+[37/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_sl.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_sl.qm
+[38/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_th.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_th.qm
+[39/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_sv.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_sv.qm
+[40/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_uk.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_uk.qm
+[41/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_tr.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_tr.qm
+[42/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_zh_CN.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_zh_CN.qm
+[43/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E make_directory /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/lib/qt6/bin/lrelease -compress -nounfinished -removeidentical -silent /home/adrian/Sync/programs/qt/mx-cleanup/translations/mx-cleanup_zh_TW.ts -qm /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_zh_TW.qm
+[44/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_autogen /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/CMakeFiles/mx-cleanup_autogen.dir/AutogenInfo.json Release && /usr/bin/cmake -E touch /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/timestamp && /usr/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /home/adrian/Sync/programs/qt/mx-cleanup /home/adrian/Sync/programs/qt/mx-cleanup /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/deps /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/CMakeFiles/d/6734ebc516867ad6eb09aae2a727055ff2aa5c701b70068f58737a562aaff8d3.d
+[45/51] cd /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_autorcc /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/CMakeFiles/mx-cleanup_autogen.dir/AutoRcc_images_EWIEGA46WW_Info.json Release
+[46/51] /usr/bin/c++ -DNDEBUG -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DVERSION=\"26.01.3\" -I/home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -g -O2 -ffile-prefix-map=/home/adrian/Sync/programs/qt/mx-cleanup=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -Wpedantic -pedantic -Werror=return-type -Werror=switch -Werror=uninitialized -Werror -Werror=return-local-addr -O3 -flto=auto -MD -MT CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/EWIEGA46WW/qrc_images.cpp.o -MF CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/EWIEGA46WW/qrc_images.cpp.o.d -o CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/EWIEGA46WW/qrc_images.cpp.o -c /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/EWIEGA46WW/qrc_images.cpp
+[47/51] /usr/bin/c++ -DNDEBUG -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DVERSION=\"26.01.3\" -I/home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -g -O2 -ffile-prefix-map=/home/adrian/Sync/programs/qt/mx-cleanup=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -Wpedantic -pedantic -Werror=return-type -Werror=switch -Werror=uninitialized -Werror -Werror=return-local-addr -O3 -flto=auto -MD -MT CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/mocs_compilation.cpp.o -MF CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/mocs_compilation.cpp.o -c /home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/mocs_compilation.cpp
+[48/51] /usr/bin/c++ -DNDEBUG -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DVERSION=\"26.01.3\" -I/home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -g -O2 -ffile-prefix-map=/home/adrian/Sync/programs/qt/mx-cleanup=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -Wpedantic -pedantic -Werror=return-type -Werror=switch -Werror=uninitialized -Werror -Werror=return-local-addr -O3 -flto=auto -MD -MT CMakeFiles/mx-cleanup.dir/main.cpp.o -MF CMakeFiles/mx-cleanup.dir/main.cpp.o.d -o CMakeFiles/mx-cleanup.dir/main.cpp.o -c /home/adrian/Sync/programs/qt/mx-cleanup/main.cpp
+[49/51] /usr/bin/c++ -DNDEBUG -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DVERSION=\"26.01.3\" -I/home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -g -O2 -ffile-prefix-map=/home/adrian/Sync/programs/qt/mx-cleanup=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -Wpedantic -pedantic -Werror=return-type -Werror=switch -Werror=uninitialized -Werror -Werror=return-local-addr -O3 -flto=auto -MD -MT CMakeFiles/mx-cleanup.dir/about.cpp.o -MF CMakeFiles/mx-cleanup.dir/about.cpp.o.d -o CMakeFiles/mx-cleanup.dir/about.cpp.o -c /home/adrian/Sync/programs/qt/mx-cleanup/about.cpp
+[50/51] /usr/bin/c++ -DNDEBUG -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DVERSION=\"26.01.3\" -I/home/adrian/Sync/programs/qt/mx-cleanup/obj-x86_64-linux-gnu/mx-cleanup_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -g -O2 -ffile-prefix-map=/home/adrian/Sync/programs/qt/mx-cleanup=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -Wpedantic -pedantic -Werror=return-type -Werror=switch -Werror=uninitialized -Werror -Werror=return-local-addr -O3 -flto=auto -MD -MT CMakeFiles/mx-cleanup.dir/mainwindow.cpp.o -MF CMakeFiles/mx-cleanup.dir/mainwindow.cpp.o.d -o CMakeFiles/mx-cleanup.dir/mainwindow.cpp.o -c /home/adrian/Sync/programs/qt/mx-cleanup/mainwindow.cpp
+[51/51] : && /usr/bin/c++ -g -O2 -ffile-prefix-map=/home/adrian/Sync/programs/qt/mx-cleanup=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -Wl,-z,relro    -flto=auto -Wl,--dependency-file=CMakeFiles/mx-cleanup.dir/link.d CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/mocs_compilation.cpp.o CMakeFiles/mx-cleanup.dir/main.cpp.o CMakeFiles/mx-cleanup.dir/mainwindow.cpp.o CMakeFiles/mx-cleanup.dir/about.cpp.o CMakeFiles/mx-cleanup.dir/mx-cleanup_autogen/EWIEGA46WW/qrc_images.cpp.o -o mx-cleanup  /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.2  /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.8.2  /usr/lib/x86_64-linux-gnu/libGLX.so  /usr/lib/x86_64-linux-gnu/libOpenGL.so  /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.2 && :
+   debian/rules override_dh_auto_test
+make[1]: Entering directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+# Skip tests as no test targets are defined
+make[1]: Leaving directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+   create-stamp debian/debhelper-build-stamp
+   dh_testroot -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_prep -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+# Install is handled by debian/install file
+dh_auto_install
+	cd obj-x86_64-linux-gnu && DESTDIR=/home/adrian/Sync/programs/qt/mx-cleanup/debian/mx-cleanup LC_ALL=C.UTF-8 ninja install
+[0/1] Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/adrian/Sync/programs/qt/mx-cleanup/debian/mx-cleanup/usr/bin/mx-cleanup
+make[1]: Leaving directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+   dh_install -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_installdocs -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_installchangelogs -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_installinit -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_installsystemduser -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_icons -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_perl -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_link -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_strip_nondeterminism -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_compress -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_fixperms -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_missing -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_dwz -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_strip -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_makeshlibs -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   debian/rules override_dh_shlibdeps
+make[1]: Entering directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
+make[1]: Leaving directory '/home/adrian/Sync/programs/qt/mx-cleanup'
+   dh_installdeb -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_gencontrol -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_md5sums -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+   dh_builddeb -O--buildsystem=cmake\+ninja -O--no-automatic-dbgsym
+dpkg-deb: building package 'mx-cleanup' in '../mx-cleanup_26.01.3_amd64.deb'.
+ dpkg-genbuildinfo -O../mx-cleanup_26.01.3_amd64.buildinfo
+ dpkg-genchanges -O../mx-cleanup_26.01.3_amd64.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: full upload; Debian-native package (full source is included)
+Now running lintian mx-cleanup_26.01.3_amd64.changes ...
+E: mx-cleanup changes: bad-distribution-in-changes-file mx
+E: mx-cleanup: copyright-not-using-common-license-for-gpl
+W: mx-cleanup: desktop-entry-invalid-category MX-Maintenance [usr/share/applications/mx-cleanup.desktop]
+W: mx-cleanup: no-manual-page [usr/bin/mx-cleanup]
+W: mx-cleanup: uses-dpkg-database-directly [usr/bin/mx-cleanup]
+Finished running lintian.

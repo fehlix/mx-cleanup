@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Mon, 26 Jan 2026 13:53:23 -0500
+Source: mx-cleanup
+Binary: mx-cleanup
+Architecture: source amd64
+Version: 26.01.3
+Distribution: mx
+Urgency: medium
+Maintainer: Adrian <adrian@mxlinux.org>
+Changed-By: Adrian <adrian@mxlinux.org>
+Description:
+ mx-cleanup - GUI for system cleanup and maintenance
+Changes:
+ mx-cleanup (26.01.3) mx; urgency=medium
+ .
+   * Improve purge safety
+   * Fix Terminology closing without a prompt
+Checksums-Sha1:
+ 86a655fa088f1ed1d97896b7ea0c650fff0b48e4 787 mx-cleanup_26.01.3.dsc
+ 6c02c3867f9c319e1e63a2571d3e1db0335ffe03 1632244 mx-cleanup_26.01.3.tar.xz
+ 54e630d49445f8b4731bae1210ab0fc401543d80 10910 mx-cleanup_26.01.3_amd64.buildinfo
+ 158593b35bc3a6a3924736005d22e336f10c6a78 172048 mx-cleanup_26.01.3_amd64.deb
+Checksums-Sha256:
+ be3b92276ed61465b1a627b1512c95191c4ee4f111904aa74942fbd46a5813c1 787 mx-cleanup_26.01.3.dsc
+ aa79526386282ff3848ac5fa4ec339a9e833350ca350cab390dbe9daa354e540 1632244 mx-cleanup_26.01.3.tar.xz
+ 2bc711873c00ef57cbf93ba274e21c125aa743a28e8ba69a5d931770a389fdf3 10910 mx-cleanup_26.01.3_amd64.buildinfo
+ 258c6f410621b1c24aaaa1abfe5c7e90f02c5dabda619d6e9cb0f4a966763f61 172048 mx-cleanup_26.01.3_amd64.deb
+Files:
+ 1417991e975b5a81a16294b61c0a9f50 787 admin optional mx-cleanup_26.01.3.dsc
+ 136fb25f146033dfa4d0440deac9c26f 1632244 admin optional mx-cleanup_26.01.3.tar.xz
+ 12ec83a0e18baabf9c8eea8d15b7d993 10910 admin optional mx-cleanup_26.01.3_amd64.buildinfo
+ 3d8abd63b90546a4ebfa38bb9f02797c 172048 admin optional mx-cleanup_26.01.3_amd64.deb
