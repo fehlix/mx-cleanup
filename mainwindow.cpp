@@ -567,7 +567,11 @@ void MainWindow::removeKernelPackages(const QStringList &list)
               .arg(rmOldVersions, packages.join(' '));
     QProcess terminalProc;
     terminalProc.start("x-terminal-emulator", {"-e", "pkexec", helper, terminalCmd});
-    terminalProc.waitForFinished();
+    terminalProc.waitForFinished(-1);  // Wait indefinitely for terminal to close
+    if (terminalProc.state() == QProcess::Running) {
+        terminalProc.kill();
+        terminalProc.waitForFinished();
+    }
     setCursor(QCursor(Qt::ArrowCursor));
 }
 
@@ -1363,7 +1367,7 @@ void MainWindow::pushRTLremove_clicked()
             if dpkg -l broadcom-sta-dkms 2>/dev/null | grep -q ^ii; then
                 echo -n broadcom-sta-dkms
             fi
-    fi)");
+    fi)", false, true);  // Run as user, quiet mode
 
     dumpList = dumpList.trimmed();
     if (dumpList.isEmpty()) {
@@ -1376,6 +1380,10 @@ void MainWindow::pushRTLremove_clicked()
     QString terminalCmd = QString("apt-get purge -y %1; apt-get install -f -y").arg(dumpList);
     QProcess terminalProc;
     terminalProc.start("x-terminal-emulator", {"-e", "pkexec", helper, terminalCmd});
-    terminalProc.waitForFinished();
+    terminalProc.waitForFinished(-1);  // Wait indefinitely for terminal to close
+    if (terminalProc.state() == QProcess::Running) {
+        terminalProc.kill();
+        terminalProc.waitForFinished();
+    }
     setCursor(QCursor(Qt::ArrowCursor));
 }

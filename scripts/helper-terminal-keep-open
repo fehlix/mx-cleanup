@@ -4,8 +4,8 @@
 
 export DEBIAN_FRONTEND=dialog
 
-# Run the command passed as a single string argument
-bash -c "$1"
+# Run all arguments as the command (pkexec splits them)
+bash -c "$*"
 EXIT_CODE=$?
 
 # Always show result and wait for user input
