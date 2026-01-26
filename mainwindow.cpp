@@ -556,9 +556,15 @@ void MainWindow::removeKernelPackages(const QStringList &list)
     }
 
     QString helper {"/usr/lib/" + QApplication::applicationName() + "/helper-terminal"};
+    QStringList packages;
+    packages << headers_installed << list;
+    if (!common.isEmpty()) {
+        packages << common.split(' ', Qt::SkipEmptyParts);
+    }
+    
     QString terminalCmd
-        = QString("%1 apt purge %2 %3 %4; apt-get install -f; read -n1 -srp \"%5\"")
-              .arg(rmOldVersions, headers_installed.join(' '), list.join(' '), common, tr("Press any key to close"));
+        = QString("%1 apt-get purge -y %2; apt-get install -f -y; echo; read -n1 -srp \"%3\"")
+              .arg(rmOldVersions, packages.join(' '), tr("Press any key to close"));
     QProcess terminalProc;
     terminalProc.start("x-terminal-emulator", {"-e", "pkexec", helper, terminalCmd});
     terminalProc.waitForFinished();
@@ -1341,21 +1347,34 @@ void MainWindow::pushRTLremove_clicked()
         if ! lsmod | grep -q $module; then
             modname="${module}"
             [[ "${module}" != "rtl"* ]] && modname="rtl${module}"
-            echo -n "${modname}-dkms "
+            if dpkg -l "${modname}-dkms" 2>/dev/null | grep -q ^ii; then
+                echo -n "${modname}-dkms "
+            fi
         fi
     done
     if ! lsmod | grep -q -w ^wl
         then
-            echo -n broadcom-sta-dkms
+            if dpkg -l broadcom-sta-dkms 2>/dev/null | grep -q ^ii; then
+                echo -n broadcom-sta-dkms
+            fi
         else
             lspci -v  | grep -q "Kernel driver in use: wl"$ || \
             lsusb -tv | grep -q "Driver=wl, "               || \
-            echo -n broadcom-sta-dkms
+            if dpkg -l broadcom-sta-dkms 2>/dev/null | grep -q ^ii; then
+                echo -n broadcom-sta-dkms
+            fi
     fi)");
+
+    dumpList = dumpList.trimmed();
+    if (dumpList.isEmpty()) {
+        QMessageBox::information(this, tr("Info"), tr("No unused network drivers found to remove."));
+        setCursor(QCursor(Qt::ArrowCursor));
+        return;
+    }
 
     QString helper {"/usr/lib/" + QApplication::applicationName() + "/helper-terminal"};
     QString terminalCmd
-        = QString("apt purge %1; apt-get install -f; read -n1 -srp \"%2\"").arg(dumpList, tr("Press any key to close"));
+        = QString("apt-get purge -y %1; apt-get install -f -y; echo; read -n1 -srp \"%2\"").arg(dumpList, tr("Press any key to close"));
     QProcess terminalProc;
     terminalProc.start("x-terminal-emulator", {"-e", "pkexec", helper, terminalCmd});
     terminalProc.waitForFinished();
