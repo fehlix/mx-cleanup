@@ -1,6 +1,7 @@
-mx-cleanup (26.01.2) mx; urgency=medium
+mx-cleanup (26.01.3) mx; urgency=medium
 
   * Improve purge safety
+  * Fix Terminology closing without a prompt
 
  -- Adrian <adrian@mxlinux.org>  Mon, 26 Jan 2026 13:53:23 -0500
 
