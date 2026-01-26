@@ -52,6 +52,40 @@ QString shellQuote(const QString &path)
     escaped.replace('"', "\\\"");
     return '"' + escaped + '"';
 }
+
+bool isArchLinuxHost()
+{
+    if (QFile::exists("/etc/arch-release")) {
+        return true;
+    }
+
+    QFile osRelease("/etc/os-release");
+    if (!osRelease.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return false;
+    }
+
+    const QString data = QString::fromUtf8(osRelease.readAll());
+    QString id;
+    QString idLike;
+    const auto lines = data.split('\n');
+    for (const auto &line : lines) {
+        if (line.startsWith("ID=")) {
+            id = line.mid(3).trimmed();
+        } else if (line.startsWith("ID_LIKE=")) {
+            idLike = line.mid(8).trimmed();
+        }
+    }
+
+    auto normalize = [](QString value) {
+        value.remove('"');
+        return value.toLower();
+    };
+
+    id = normalize(id);
+    idLike = normalize(idLike);
+
+    return id == "arch" || idLike.split(' ').contains("arch");
+}
 }
 
 MainWindow::MainWindow(QWidget *parent)
@@ -162,6 +196,12 @@ void MainWindow::setup()
     }
     if (!hasAnyTool) {
         ui->groupBoxUsage->hide();
+    }
+
+    isArchLinux = isArchLinuxHost();
+    if (isArchLinux) {
+        ui->groupBoxKernel->hide();
+        ui->groupBoxApt->setTitle(tr("Clean pacman cache"));
     }
 
     suppressUserSwitch = true;
@@ -679,7 +719,11 @@ void MainWindow::saveSchedule(const QString &cmd_str, const QString &period)
         }
 
         QTemporaryFile tempCron;
-        tempCron.open();
+        if (!tempCron.open()) {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Failed to create temporary cron file: %1").arg(tempCron.errorString()));
+            return;
+        }
         tempCron.write(QString("@reboot root %1\n").arg(scriptTarget).toUtf8());
         tempCron.close();
         cmdOutAsRoot("mv " + tempCron.fileName() + ' ' + cronTarget);
@@ -688,7 +732,11 @@ void MainWindow::saveSchedule(const QString &cmd_str, const QString &period)
     }
 
     QTemporaryFile tempFile;
-    tempFile.open();
+    if (!tempFile.open()) {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Failed to create temporary script file: %1").arg(tempFile.errorString()));
+        return;
+    }
     QTextStream out(&tempFile);
     out << "#!/bin/sh\n";
     out << "#\n";
@@ -963,14 +1011,26 @@ void MainWindow::pushApply_clicked()
     };
     if (ui->groupBoxApt->isChecked()) {
         QString cleanCmd;
-        if (ui->radioAutoClean->isChecked()) {
-            cleanCmd = "apt-get autoclean";
-        } else if (ui->radioClean->isChecked()) {
-            cleanCmd = "apt-get clean";
+        QString size_cmd;
+        QString cacheLabel = "apt-cache";
+        if (isArchLinux) {
+            cacheLabel = "pacman-cache";
+            size_cmd = "du -s /var/cache/pacman/pkg/ | cut -f1";
+            if (ui->radioAutoClean->isChecked()) {
+                cleanCmd = "pacman -Sc --noconfirm";
+            } else if (ui->radioClean->isChecked()) {
+                cleanCmd = "pacman -Scc --noconfirm";
+            }
+        } else {
+            size_cmd = "du -s /var/cache/apt/archives/ | cut -f1";
+            if (ui->radioAutoClean->isChecked()) {
+                cleanCmd = "apt-get autoclean";
+            } else if (ui->radioClean->isChecked()) {
+                cleanCmd = "apt-get clean";
+            }
         }
 
         if (!cleanCmd.isEmpty()) {
-            const QString size_cmd = "du -s /var/cache/apt/archives/ | cut -f1";
             quint64 before_size = cmdOutAsRoot(size_cmd).toULongLong();
 
             if (!ui->radioReboot->isChecked()) {
@@ -978,7 +1038,7 @@ void MainWindow::pushApply_clicked()
             }
 
             quint64 after_size = cmdOutAsRoot(size_cmd).toULongLong();
-            addToTotal("apt-cache", before_size > after_size ? before_size - after_size : 0);
+            addToTotal(cacheLabel, before_size > after_size ? before_size - after_size : 0);
             addCommandToSchedule(cleanCmd);
         }
     }
