@@ -976,8 +976,8 @@ void MainWindow::pushApply_clicked()
     if (ui->checkFlatpak->isChecked()) {
         const QString flatpakAction
             = "pgrep -a flatpak | grep -v flatpak-s || flatpak uninstall --unused --delete-data --noninteractive";
-        auto scopedCommand = [&](const QString &command) -> QString {
-            if (!elevate || selectedUser.isEmpty()) {
+        auto scopedCommand = [&](const QString &command, bool forceUserContext = false) -> QString {
+            if ((!elevate && !forceUserContext) || selectedUser.isEmpty()) {
                 return command;
             }
             return QString("runuser -u %1 -- /bin/bash -lc %2").arg(selectedUser, shellQuote(command));
@@ -1006,7 +1006,7 @@ void MainWindow::pushApply_clicked()
         addToTotal("flatpak-user", userDelta);
         addToTotal("flatpak-system", systemDelta);
 
-        flatpak = scopedCommand(flatpakAction);
+        flatpak = scopedCommand(flatpakAction, true);
     }
 
     QString apt;
