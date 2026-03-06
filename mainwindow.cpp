@@ -1080,7 +1080,9 @@ void MainWindow::pushApply_clicked()
             addToTotal("logs-old", logsKiB);
             logs = R"(find /var/log \( -name "*.gz" -o -name "*.old" -o -name "*.[0-9]" -o -name "*.[0-9].log" \))"
                    + time + " -type f -delete 2>/dev/null";
-            cmdOutAsRoot(logs);
+            if (!ui->radioReboot->isChecked()) {
+                cmdOutAsRoot(logs);
+            }
         } else if (ui->radioAllLogs->isChecked()) {
             quint64 logsKiB
                 = cmdOutAsRoot(
@@ -1089,7 +1091,9 @@ void MainWindow::pushApply_clicked()
                       .toULongLong();
             addToTotal("logs-all", logsKiB);
             logs = "find /var/log -type f" + time + R"( -exec sh -c "echo > '{}'" \;)"; // empty the logs
-            cmdOutAsRoot(logs);
+            if (!ui->radioReboot->isChecked()) {
+                cmdOutAsRoot(logs);
+            }
         }
     }
 
