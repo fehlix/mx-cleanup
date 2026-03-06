@@ -369,7 +369,8 @@ void MainWindow::ensureSettingsOwnership(const QString &user, const QString &tar
         return;
     }
 
-    const QString ownerGroup = primaryGroupForUser(user).isEmpty() ? user : primaryGroupForUser(user);
+    const QString primaryGroup = primaryGroupForUser(user);
+    const QString ownerGroup = primaryGroup.isEmpty() ? user : primaryGroup;
     QStringList commands;
     commands << QString("chown %1:%2 %3").arg(user, ownerGroup, shellQuote(settingsDir));
     if (!targetPath.isEmpty() && QFile::exists(targetPath)) {
