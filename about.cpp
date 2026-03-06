@@ -33,12 +33,12 @@
 #include "common.h"
 #include <unistd.h>
 
-// Display doc as nomal user when run as root
+// Display doc as normal user when run as root
 void displayDoc(const QString &url, const QString &title)
 {
-    bool started_as_root = false;
-    if (qEnvironmentVariable("HOME") == "root") {
-        started_as_root = true;
+    const bool startedAsRoot = (getuid() == 0);
+    const QByteArray previousHome = qgetenv("HOME");
+    if (startedAsRoot) {
         qputenv("HOME", starting_home.toUtf8()); // Use original home for theming purposes
     }
     // Prefer mx-viewer otherwise use xdg-open (use runuser to run that as logname user)
@@ -56,8 +56,8 @@ void displayDoc(const QString &url, const QString &title)
             QProcess::startDetached("runuser", {"-u", user, "--", "xdg-open", url});
         }
     }
-    if (started_as_root) {
-        qputenv("HOME", "/root");
+    if (startedAsRoot) {
+        qputenv("HOME", previousHome);
     }
 }
 
