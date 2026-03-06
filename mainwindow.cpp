@@ -358,7 +358,7 @@ void MainWindow::initializeSettingsForUser(const QString &user)
     currentSettingsPath = filePath;
 }
 
-void MainWindow::ensureSettingsOwnership(const QString &user)
+void MainWindow::ensureSettingsOwnership(const QString &user, const QString &targetPath)
 {
     if (user.isEmpty()) {
         return;
@@ -369,7 +369,13 @@ void MainWindow::ensureSettingsOwnership(const QString &user)
         return;
     }
 
-    const QString command = "chown -R " + user + ':' + user + ' ' + shellQuote(settingsDir);
+    const QString ownerGroup = primaryGroupForUser(user).isEmpty() ? user : primaryGroupForUser(user);
+    QStringList commands;
+    commands << QString("chown %1:%2 %3").arg(user, ownerGroup, shellQuote(settingsDir));
+    if (!targetPath.isEmpty() && QFile::exists(targetPath)) {
+        commands << QString("chown %1:%2 %3").arg(user, ownerGroup, shellQuote(targetPath));
+    }
+    const QString command = commands.join(" && ");
     if (getuid() == 0) {
         cmdOut(command, false, true);
     } else {
@@ -837,7 +843,8 @@ void MainWindow::saveSettings()
     if (!dir.exists(dirPath)) {
         if (getuid() == 0) {
             qDebug().noquote() << "Creating settings directory as root:" << dirPath;
-            cmdOut(QString("install -d -m 755 -o %1 -g %1 %2").arg(user, shellQuote(dirPath)), false, true);
+            const QString ownerGroup = targetGroupName.isEmpty() ? user : targetGroupName;
+            cmdOut(QString("install -d -m 755 -o %1 -g %2 %3").arg(user, ownerGroup, shellQuote(dirPath)), false, true);
         } else {
             qDebug().noquote() << "Creating settings directory:" << dirPath;
             dir.mkpath(dirPath);
@@ -849,7 +856,7 @@ void MainWindow::saveSettings()
     settings->sync();
     qDebug().noquote() << "Settings sync status:" << settings->status();
     if (getuid() == 0 && user != currentUser) {
-        ensureSettingsOwnership(user);
+        ensureSettingsOwnership(user, targetPath);
     }
 
     currentSettingsPath = targetPath;

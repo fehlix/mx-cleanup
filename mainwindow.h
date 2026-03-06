@@ -80,5 +80,5 @@ private:
     QString settingsDirForUser(const QString &user) const;
     QString settingsFileForUser(const QString &user) const;
     void initializeSettingsForUser(const QString &user);
-    void ensureSettingsOwnership(const QString &user);
+    void ensureSettingsOwnership(const QString &user, const QString &targetPath);
 };
