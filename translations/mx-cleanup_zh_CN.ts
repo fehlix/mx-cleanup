@@ -4,7 +4,7 @@
     <message>
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="1218"/>
+        <location filename="../mainwindow.cpp" line="1222"/>
         <source>MX Cleanup</source>
         <translation>MX清理助手</translation>
     </message>
@@ -70,7 +70,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="784"/>
-        <location filename="../mainwindow.cpp" line="1319"/>
+        <location filename="../mainwindow.cpp" line="1323"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
@@ -98,7 +98,7 @@
         <location filename="../mainwindow.ui" line="103"/>
         <location filename="../mainwindow.ui" line="294"/>
         <location filename="../mainwindow.ui" line="438"/>
-        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source> days</source>
         <translation>天</translation>
     </message>
@@ -264,14 +264,14 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source> day</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="729"/>
-        <location filename="../mainwindow.cpp" line="742"/>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="733"/>
+        <location filename="../mainwindow.cpp" line="746"/>
+        <location filename="../mainwindow.cpp" line="912"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -281,102 +281,102 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="730"/>
+        <location filename="../mainwindow.cpp" line="734"/>
         <source>Failed to create temporary cron file: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="743"/>
+        <location filename="../mainwindow.cpp" line="747"/>
         <source>Failed to create temporary script file: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="912"/>
         <source>Failed to elevate privileges</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1206"/>
+        <location filename="../mainwindow.cpp" line="1210"/>
         <source>Done</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1208"/>
+        <location filename="../mainwindow.cpp" line="1212"/>
         <source>Cleanup script will run at reboot</source>
         <translation>清理脚本将在重启时运行</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1209"/>
+        <location filename="../mainwindow.cpp" line="1213"/>
         <source>Cleanup command done</source>
         <translation>清理指令完成</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1210"/>
+        <location filename="../mainwindow.cpp" line="1214"/>
         <source>%1 MiB were freed</source>
         <translation>%1 MiB 已清理</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1218"/>
+        <location filename="../mainwindow.cpp" line="1222"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1219"/>
+        <location filename="../mainwindow.cpp" line="1223"/>
         <source>Version: </source>
         <translation>版本:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1221"/>
+        <location filename="../mainwindow.cpp" line="1225"/>
         <source>Quick and safe removal of old files</source>
         <translation>安全快速清理旧文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1223"/>
+        <location filename="../mainwindow.cpp" line="1227"/>
         <source>Copyright (c) MX Linux</source>
         <translation>版权所有(c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1224"/>
+        <location filename="../mainwindow.cpp" line="1228"/>
         <source>%1 License</source>
         <translation>%1 许可证</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1231"/>
+        <location filename="../mainwindow.cpp" line="1235"/>
         <source>%1 Help</source>
         <translation>%1 帮助</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1314"/>
+        <location filename="../mainwindow.cpp" line="1318"/>
         <source>Kernel currently in use: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1317"/>
+        <location filename="../mainwindow.cpp" line="1321"/>
         <source>Remove selected</source>
         <translation>删除选中的</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1322"/>
+        <location filename="../mainwindow.cpp" line="1326"/>
         <source>Similar kernels that can be removed:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1323"/>
+        <location filename="../mainwindow.cpp" line="1327"/>
         <source>Other kernels that can be removed:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1326"/>
+        <location filename="../mainwindow.cpp" line="1330"/>
         <source>&lt;b&gt;Nothing to remove.&lt;/b&gt; Cannot remove kernel in use.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1370"/>
+        <location filename="../mainwindow.cpp" line="1374"/>
         <source>Info</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1370"/>
+        <location filename="../mainwindow.cpp" line="1374"/>
         <source>No unused network drivers found to remove.</source>
         <translation type="unfinished"/>
     </message>

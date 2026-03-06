@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="cs">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="en_US">
 <context>
     <name>MainWindow</name>
     <message>
@@ -6,17 +6,17 @@
         <location filename="../mainwindow.cpp" line="184"/>
         <location filename="../mainwindow.cpp" line="1222"/>
         <source>MX Cleanup</source>
-        <translation>MX Cleanup</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="683"/>
         <source>Display help </source>
-        <translation>Zobrazit nápovědu</translation>
+        <translation>Display help </translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="686"/>
         <source>Help</source>
-        <translation>Nápověda</translation>
+        <translation>Help</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="692"/>
@@ -26,22 +26,22 @@
     <message>
         <location filename="../mainwindow.ui" line="658"/>
         <source>About this application</source>
-        <translation>O této aplikaci</translation>
+        <translation>About this application</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="24"/>
         <source>Main</source>
-        <translation>Hlavní</translation>
+        <translation>Main</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="531"/>
         <source>Purge residual configurations from removed packages</source>
-        <translation>Odstranit zbytky konfigurací odinstalovaných balíčků</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="539"/>
         <source>Tools</source>
-        <translation>Nástroje</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="545"/>
@@ -56,7 +56,7 @@
     <message>
         <location filename="../mainwindow.ui" line="661"/>
         <source>About...</source>
-        <translation>O programu</translation>
+        <translation>About...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="667"/>
@@ -66,13 +66,13 @@
     <message>
         <location filename="../mainwindow.ui" line="781"/>
         <source>Quit application</source>
-        <translation>Ukončit aplikaci</translation>
+        <translation>Quit application</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="784"/>
         <location filename="../mainwindow.cpp" line="1323"/>
         <source>Close</source>
-        <translation>Zavřít</translation>
+        <translation>Close</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="790"/>
@@ -82,17 +82,17 @@
     <message>
         <location filename="../mainwindow.ui" line="756"/>
         <source>Apply</source>
-        <translation>Použít</translation>
+        <translation>Apply</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="36"/>
         <source>Empty Trash</source>
-        <translation>Vysypat Koš</translation>
+        <translation>Empty Trash</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="45"/>
         <source>Trash older than:</source>
-        <translation>Smazané položky starší než:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="103"/>
@@ -100,153 +100,153 @@
         <location filename="../mainwindow.ui" line="438"/>
         <location filename="../mainwindow.cpp" line="895"/>
         <source> days</source>
-        <translation>dní</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>All users</source>
-        <translation>Všichni uživatelé</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="90"/>
         <source>Selected user</source>
-        <translation>Vybraný uživatel</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="210"/>
         <source>Clear APT Cache</source>
-        <translation>Vyčistit mezipaměť APT</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="225"/>
         <source>Old files</source>
-        <translation>Staré soubory</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="244"/>
         <source>All files</source>
-        <translation>Všechny soubory</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="605"/>
         <source>Graphical Tool for Analyzing Disk Usage</source>
-        <translation>Grafický nástroj pro analýzu využití disku</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="617"/>
         <source>Run Disk Usage Analyzer</source>
-        <translation>Spustit analýzu využití disku</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="141"/>
         <source>Schedule</source>
-        <translation>Plán</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="153"/>
         <source>No automatic clean</source>
-        <translation>Bez automatického čištění</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
         <source>At reboot</source>
-        <translation>Při restartu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="167"/>
         <source>Daily</source>
-        <translation>Denní</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="174"/>
         <source>Weekly</source>
-        <translation>Týdenní</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="181"/>
         <source>Monthly</source>
-        <translation>Měsíční</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="467"/>
         <source>Free Disk Space for User</source>
-        <translation>Uvolnit místo na disku uživatele</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="479"/>
         <location filename="../mainwindow.ui" line="495"/>
         <source>Select user to repair</source>
-        <translation>Vybrat uživatele k opravě</translation>
+        <translation>Select user to repair</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
         <source>Select user:</source>
-        <translation>Vyberte uživatele:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="263"/>
         <source>Delete Logs</source>
-        <translation>Smazat Log soubory</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="278"/>
         <source>All logs</source>
-        <translation>Všechny logy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="339"/>
         <source>Old logs</source>
-        <translation>Staré logy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="326"/>
         <source>Logs older than:</source>
-        <translation>Záznamy starší než:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="551"/>
         <source>Remove unused WiFi drivers</source>
-        <translation>Odstranění nepoužívaných ovladačů WiFi</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="570"/>
         <source>List and select kernels to remove</source>
-        <translation>Seznam Linux jáder pro odebrání</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="125"/>
         <source>Clean Flatpak</source>
-        <translation>Flatpaky k vyčištění</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="131"/>
         <source>Remove unused runtimes</source>
-        <translation>Odebrat nevyužité runtimy</translation>
+        <translation>Remove unused runtimes</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="364"/>
         <source>Clean Folders</source>
-        <translation>Složky k vyčištění</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="428"/>
         <source>Not accessed for:</source>
-        <translation>Nezpřístupněno pro:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="376"/>
         <source>Cache</source>
-        <translation>Mezipaměť</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="451"/>
         <source>All (potentially dangerous)</source>
-        <translation>Vše (potencionálně nebezpečné) </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="405"/>
         <source>Thumbnails</source>
-        <translation>Miniatury</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="135"/>
@@ -261,19 +261,19 @@
     <message>
         <location filename="../mainwindow.cpp" line="142"/>
         <source>Removing packages, please wait</source>
-        <translation>Odebírání balíčků, čekejte prosím</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="895"/>
         <source> day</source>
-        <translation>den</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="733"/>
         <location filename="../mainwindow.cpp" line="746"/>
         <location filename="../mainwindow.cpp" line="912"/>
         <source>Error</source>
-        <translation>Chyba</translation>
+        <translation>Current kernel doesn&apos;t support selected compression algorithm, please edit the configuration file and select a different algorithm.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="204"/>
@@ -298,77 +298,77 @@
     <message>
         <location filename="../mainwindow.cpp" line="1210"/>
         <source>Done</source>
-        <translation>Hotovo</translation>
+        <translation>Done</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1212"/>
         <source>Cleanup script will run at reboot</source>
-        <translation>Při restartu se spustí čisticí skript</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1213"/>
         <source>Cleanup command done</source>
-        <translation>Příkaz vyčištění byl dokončen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1214"/>
         <source>%1 MiB were freed</source>
-        <translation>Bylo uvolněno %1 MiB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1222"/>
         <source>About</source>
-        <translation>O aplikaci</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1223"/>
         <source>Version: </source>
-        <translation>Verze:</translation>
+        <translation>Version: </translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1225"/>
         <source>Quick and safe removal of old files</source>
-        <translation>Rychlé a bezpečné odstranění starých souborů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1227"/>
         <source>Copyright (c) MX Linux</source>
-        <translation>Vlastnická práva (c) MX Linux</translation>
+        <translation>Copyright (c) MX Linux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1228"/>
         <source>%1 License</source>
-        <translation>Licence %1</translation>
+        <translation>%1 License</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1235"/>
         <source>%1 Help</source>
-        <translation>Nápověda %1</translation>
+        <translation>%1 Help</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1318"/>
         <source>Kernel currently in use: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation>Momentálně používané jádro: &lt;b&gt;%1&lt;/b&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1321"/>
         <source>Remove selected</source>
-        <translation>Odebrat označené</translation>
+        <translation>Remove selected</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1326"/>
         <source>Similar kernels that can be removed:</source>
-        <translation>Podobné jádra, které je možné odstranit:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1327"/>
         <source>Other kernels that can be removed:</source>
-        <translation>Jiné jádra, které je možné odstranit:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1330"/>
         <source>&lt;b&gt;Nothing to remove.&lt;/b&gt; Cannot remove kernel in use.</source>
-        <translation>&lt;b&gt;Nic k odstranění.&lt;/b&gt; Nelze odebrat jádro, které je akt. používané.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1374"/>
@@ -386,44 +386,44 @@
     <message>
         <location filename="../about.cpp" line="70"/>
         <source>License</source>
-        <translation>Licence</translation>
+        <translation>License</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="71"/>
         <location filename="../about.cpp" line="81"/>
         <source>Changelog</source>
-        <translation>Protokol změn</translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="72"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../about.cpp" line="94"/>
         <source>&amp;Close</source>
-        <translation>&amp;Zavřít</translation>
+        <translation>&amp;Close</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="63"/>
         <source>Quick safe removal of old files</source>
-        <translation>Bezpečné odebrání zastaralých souborů</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../main.cpp" line="89"/>
         <location filename="../main.cpp" line="97"/>
         <source>Error</source>
-        <translation>Chyba</translation>
+        <translation>Current kernel doesn&apos;t support selected compression algorithm, please edit the configuration file and select a different algorithm.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="90"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation>Spuštěno pod účtem root-a, odhlašte se a přihlašte jako bězný uživatel.</translation>
+        <translation>You seem to be logged in as root, please log out and log in as normal user to use this program.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="98"/>
         <source>You must run this program with admin access.</source>
-        <translation>Tento program musíte spustit s oprávněním správce.</translation>
+        <translation>You must run this program with admin access.</translation>
     </message>
 </context>
 </TS>

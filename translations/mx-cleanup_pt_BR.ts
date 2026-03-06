@@ -4,7 +4,7 @@
     <message>
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="1218"/>
+        <location filename="../mainwindow.cpp" line="1222"/>
         <source>MX Cleanup</source>
         <translation>Limpeza Automática do MX</translation>
     </message>
@@ -70,7 +70,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="784"/>
-        <location filename="../mainwindow.cpp" line="1319"/>
+        <location filename="../mainwindow.cpp" line="1323"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
@@ -98,7 +98,7 @@
         <location filename="../mainwindow.ui" line="103"/>
         <location filename="../mainwindow.ui" line="294"/>
         <location filename="../mainwindow.ui" line="438"/>
-        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source> days</source>
         <translation>dias</translation>
     </message>
@@ -264,121 +264,121 @@
         <translation>Removendo os pacotes. Por favor, aguarde a finalização</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source> day</source>
         <translation>dia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="729"/>
-        <location filename="../mainwindow.cpp" line="742"/>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="733"/>
+        <location filename="../mainwindow.cpp" line="746"/>
+        <location filename="../mainwindow.cpp" line="912"/>
         <source>Error</source>
         <translation>Ocorreu um erro</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="204"/>
         <source>Clean pacman cache</source>
-        <translation type="unfinished"/>
+        <translation>Limpar o cachê (memória temporária) do gerenciador de pacotes ‘pacman’</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="730"/>
+        <location filename="../mainwindow.cpp" line="734"/>
         <source>Failed to create temporary cron file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível criar o arquivo temporário cron (agendado): %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="743"/>
+        <location filename="../mainwindow.cpp" line="747"/>
         <source>Failed to create temporary script file: %1</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível criar um arquivo temporário de execução: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="912"/>
         <source>Failed to elevate privileges</source>
         <translation>Ocorreu uma falha ao elevar os privilégios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1206"/>
+        <location filename="../mainwindow.cpp" line="1210"/>
         <source>Done</source>
         <translation>Concluído</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1208"/>
+        <location filename="../mainwindow.cpp" line="1212"/>
         <source>Cleanup script will run at reboot</source>
         <translation>O programa de limpeza automática será executado na reinicialização</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1209"/>
+        <location filename="../mainwindow.cpp" line="1213"/>
         <source>Cleanup command done</source>
         <translation>O comando da limpeza foi concluído com sucesso</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1210"/>
+        <location filename="../mainwindow.cpp" line="1214"/>
         <source>%1 MiB were freed</source>
         <translation>Foram liberados %1 MiB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1218"/>
+        <location filename="../mainwindow.cpp" line="1222"/>
         <source>About</source>
         <translation>Sobre</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1219"/>
+        <location filename="../mainwindow.cpp" line="1223"/>
         <source>Version: </source>
         <translation>Versão:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1221"/>
+        <location filename="../mainwindow.cpp" line="1225"/>
         <source>Quick and safe removal of old files</source>
         <translation>Remoção rápida e segura de arquivos antigos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1223"/>
+        <location filename="../mainwindow.cpp" line="1227"/>
         <source>Copyright (c) MX Linux</source>
         <translation>Direitos de Autor (c) MX Linux</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1224"/>
+        <location filename="../mainwindow.cpp" line="1228"/>
         <source>%1 License</source>
         <translation>Licença do %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1231"/>
+        <location filename="../mainwindow.cpp" line="1235"/>
         <source>%1 Help</source>
         <translation>Ajuda do %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1314"/>
+        <location filename="../mainwindow.cpp" line="1318"/>
         <source>Kernel currently in use: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>O núcleo (kernel) atualmente em uso é &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1317"/>
+        <location filename="../mainwindow.cpp" line="1321"/>
         <source>Remove selected</source>
         <translation>Remover os itens selecionados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1322"/>
+        <location filename="../mainwindow.cpp" line="1326"/>
         <source>Similar kernels that can be removed:</source>
         <translation>Os núcleos (kernels) similares que podem ser removidos:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1323"/>
+        <location filename="../mainwindow.cpp" line="1327"/>
         <source>Other kernels that can be removed:</source>
         <translation>Outros núcleos (kernels) que podem ser removidos:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1326"/>
+        <location filename="../mainwindow.cpp" line="1330"/>
         <source>&lt;b&gt;Nothing to remove.&lt;/b&gt; Cannot remove kernel in use.</source>
         <translation>&lt;b&gt;Este núcleo pode ser removido.&lt;/b&gt; Não é possível remover o núcleo (kernel) que está em uso.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1370"/>
+        <location filename="../mainwindow.cpp" line="1374"/>
         <source>Info</source>
         <translation>Informações</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1370"/>
+        <location filename="../mainwindow.cpp" line="1374"/>
         <source>No unused network drivers found to remove.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum dispositivo de rede não usado foi encontrado para remoção.</translation>
     </message>
 </context>
 <context>

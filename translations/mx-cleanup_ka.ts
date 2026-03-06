@@ -4,14 +4,14 @@
     <message>
         <location filename="../mainwindow.ui" line="14"/>
         <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="1218"/>
+        <location filename="../mainwindow.cpp" line="1222"/>
         <source>MX Cleanup</source>
-        <translation type="unfinished"/>
+        <translation>MX Cleanup</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="683"/>
         <source>Display help </source>
-        <translation type="unfinished"/>
+        <translation>დახმარების ჩვენება </translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="686"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../mainwindow.ui" line="658"/>
         <source>About this application</source>
-        <translation type="unfinished"/>
+        <translation>ამ აპლიკაციის შესახებ</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="24"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../mainwindow.ui" line="531"/>
         <source>Purge residual configurations from removed packages</source>
-        <translation type="unfinished"/>
+        <translation>წაშლილი პაკეტებიდან დარჩენილი კონფიგურაციების გასუფთავება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="539"/>
@@ -46,12 +46,12 @@
     <message>
         <location filename="../mainwindow.ui" line="545"/>
         <source>Removal Tools</source>
-        <translation type="unfinished"/>
+        <translation>წაშლის ხელსაწყოები</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="583"/>
         <source>Remove MX manuals for languages other than system default</source>
-        <translation type="unfinished"/>
+        <translation>MX-ის სახელმძღვანელოს წაშლა ენებისთვის, რომლებიც სისტემის ნაგულისხმევი ენისგან განსხვავდება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="661"/>
@@ -66,11 +66,11 @@
     <message>
         <location filename="../mainwindow.ui" line="781"/>
         <source>Quit application</source>
-        <translation type="unfinished"/>
+        <translation>აპლიკაციიდან გასვლა</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="784"/>
-        <location filename="../mainwindow.cpp" line="1319"/>
+        <location filename="../mainwindow.cpp" line="1323"/>
         <source>Close</source>
         <translation>დახურვა</translation>
     </message>
@@ -87,55 +87,55 @@
     <message>
         <location filename="../mainwindow.ui" line="36"/>
         <source>Empty Trash</source>
-        <translation type="unfinished"/>
+        <translation>ნაგვის ყუთის დაცარიელება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="45"/>
         <source>Trash older than:</source>
-        <translation type="unfinished"/>
+        <translation>ნაგავში გადატანა, თუ ძველია, ვიდრე:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="103"/>
         <location filename="../mainwindow.ui" line="294"/>
         <location filename="../mainwindow.ui" line="438"/>
-        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source> days</source>
-        <translation>დღე</translation>
+        <translation> დღე</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="58"/>
         <source>All users</source>
-        <translation type="unfinished"/>
+        <translation>ყველა მომხმარებელი</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="90"/>
         <source>Selected user</source>
-        <translation type="unfinished"/>
+        <translation>მონიშნული მომხმარებელი</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="210"/>
         <source>Clear APT Cache</source>
-        <translation type="unfinished"/>
+        <translation>APT-ის კეშის გასუფთავება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="225"/>
         <source>Old files</source>
-        <translation type="unfinished"/>
+        <translation>ძველი ფაილები</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="244"/>
         <source>All files</source>
-        <translation type="unfinished"/>
+        <translation>ყველა ფაილი</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="605"/>
         <source>Graphical Tool for Analyzing Disk Usage</source>
-        <translation type="unfinished"/>
+        <translation>გრაფიკული პროგრამა დისკის გამოყენების ანალიზიზისთვის</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="617"/>
         <source>Run Disk Usage Analyzer</source>
-        <translation type="unfinished"/>
+        <translation>დისკის მოხმარების ანალიზატორის გაშვება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="141"/>
@@ -145,12 +145,12 @@
     <message>
         <location filename="../mainwindow.ui" line="153"/>
         <source>No automatic clean</source>
-        <translation type="unfinished"/>
+        <translation>ავტომატური გაშუფთავების გარეშე</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
         <source>At reboot</source>
-        <translation type="unfinished"/>
+        <translation>გადატვირთვისას</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="167"/>
@@ -170,215 +170,215 @@
     <message>
         <location filename="../mainwindow.ui" line="467"/>
         <source>Free Disk Space for User</source>
-        <translation type="unfinished"/>
+        <translation>თავისუფალი ადგილი დისკზე მომხმარებლისთვის</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="479"/>
         <location filename="../mainwindow.ui" line="495"/>
         <source>Select user to repair</source>
-        <translation type="unfinished"/>
+        <translation>აირჩიეთ მომხმარებელი შესაკეთებლად</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="482"/>
         <source>Select user:</source>
-        <translation type="unfinished"/>
+        <translation>აირჩიეთ მომხმარებელი:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="263"/>
         <source>Delete Logs</source>
-        <translation type="unfinished"/>
+        <translation>ჟურნალის წაშლა</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="278"/>
         <source>All logs</source>
-        <translation type="unfinished"/>
+        <translation>ყველა ჟურნალი</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="339"/>
         <source>Old logs</source>
-        <translation type="unfinished"/>
+        <translation>ძველი ჟურნალი</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="326"/>
         <source>Logs older than:</source>
-        <translation type="unfinished"/>
+        <translation>ჟურნალი, რომელიც ძველია, ვიდრე:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="551"/>
         <source>Remove unused WiFi drivers</source>
-        <translation type="unfinished"/>
+        <translation>გამოუყენებელი WiFi დრაივერების წაშლა</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="570"/>
         <source>List and select kernels to remove</source>
-        <translation type="unfinished"/>
+        <translation>ბირთვების ჩამოთვლა და მონიშვნა წასაშლელად</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="125"/>
         <source>Clean Flatpak</source>
-        <translation type="unfinished"/>
+        <translation>Flatpak-ის გასუფთავება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="131"/>
         <source>Remove unused runtimes</source>
-        <translation type="unfinished"/>
+        <translation>გამოუყენებელი გაშვების გარემოების წაშლა</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="364"/>
         <source>Clean Folders</source>
-        <translation type="unfinished"/>
+        <translation>საქაღალდეების გასუფთავება</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="428"/>
         <source>Not accessed for:</source>
-        <translation type="unfinished"/>
+        <translation>წვდომა არ ყოფილა:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="376"/>
         <source>Cache</source>
-        <translation type="unfinished"/>
+        <translation>კეში</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="451"/>
         <source>All (potentially dangerous)</source>
-        <translation type="unfinished"/>
+        <translation>ყველა(პოტენციურად სახიფათოა)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="405"/>
         <source>Thumbnails</source>
-        <translation type="unfinished"/>
+        <translation>მინატურები</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="135"/>
         <source>Remove Manuals</source>
-        <translation type="unfinished"/>
+        <translation>სახელმძღვანელოების წაშლა</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="135"/>
         <source>No manuals to remove.</source>
-        <translation type="unfinished"/>
+        <translation>წასაშლელი სახელმძღვანელოების გარეშე.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="142"/>
         <source>Removing packages, please wait</source>
-        <translation type="unfinished"/>
+        <translation>მიმდინარეობს პაკეტების წაშლა. მოითმინეთ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source> day</source>
-        <translation>დღე</translation>
+        <translation> დღე</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="729"/>
-        <location filename="../mainwindow.cpp" line="742"/>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="733"/>
+        <location filename="../mainwindow.cpp" line="746"/>
+        <location filename="../mainwindow.cpp" line="912"/>
         <source>Error</source>
         <translation>შეცდომა</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="204"/>
         <source>Clean pacman cache</source>
-        <translation type="unfinished"/>
+        <translation>pacman-ის კეშის გასუფთავება</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="730"/>
+        <location filename="../mainwindow.cpp" line="734"/>
         <source>Failed to create temporary cron file: %1</source>
-        <translation type="unfinished"/>
+        <translation>დროებითი cron ფაილის შექმნა ჩავარდა: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="743"/>
+        <location filename="../mainwindow.cpp" line="747"/>
         <source>Failed to create temporary script file: %1</source>
-        <translation type="unfinished"/>
+        <translation>დროებითი სკრიპტის ფაილის შექმნა ჩავარდა: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="912"/>
         <source>Failed to elevate privileges</source>
-        <translation type="unfinished"/>
+        <translation>პრივილეგიების აწევა ჩავარდა</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1206"/>
+        <location filename="../mainwindow.cpp" line="1210"/>
         <source>Done</source>
         <translation>მზადაა</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1208"/>
+        <location filename="../mainwindow.cpp" line="1212"/>
         <source>Cleanup script will run at reboot</source>
-        <translation type="unfinished"/>
+        <translation>გასუფთავების სკრიპტი გადატვირთვისას გაეშვება</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1209"/>
+        <location filename="../mainwindow.cpp" line="1213"/>
         <source>Cleanup command done</source>
-        <translation type="unfinished"/>
+        <translation>გასუფთავების ბრძანება დასრულდა</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1210"/>
+        <location filename="../mainwindow.cpp" line="1214"/>
         <source>%1 MiB were freed</source>
-        <translation type="unfinished"/>
+        <translation>%1 მიბ გათავისუფლდა</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1218"/>
+        <location filename="../mainwindow.cpp" line="1222"/>
         <source>About</source>
         <translation>შესახებ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1219"/>
-        <source>Version: </source>
-        <translation>ვერსია:</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="1221"/>
-        <source>Quick and safe removal of old files</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="1223"/>
+        <source>Version: </source>
+        <translation>ვერსია: </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1225"/>
+        <source>Quick and safe removal of old files</source>
+        <translation>ძველი ფაილების სწრაფი და უსაფრთხო წაშლა</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1227"/>
         <source>Copyright (c) MX Linux</source>
-        <translation type="unfinished"/>
+        <translation>(c) MX Linux საავტორო ფულებები დაცულია</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1224"/>
+        <location filename="../mainwindow.cpp" line="1228"/>
         <source>%1 License</source>
-        <translation type="unfinished"/>
+        <translation>ლიცენზია %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1231"/>
+        <location filename="../mainwindow.cpp" line="1235"/>
         <source>%1 Help</source>
-        <translation type="unfinished"/>
+        <translation>%1-ის დახმარება</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1314"/>
+        <location filename="../mainwindow.cpp" line="1318"/>
         <source>Kernel currently in use: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"/>
+        <translation>ამჟამად გამოყენებული ბირთვი: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1317"/>
+        <location filename="../mainwindow.cpp" line="1321"/>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="1322"/>
-        <source>Similar kernels that can be removed:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="1323"/>
-        <source>Other kernels that can be removed:</source>
-        <translation type="unfinished"/>
+        <translation>მონიშნულის წაშლა</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1326"/>
-        <source>&lt;b&gt;Nothing to remove.&lt;/b&gt; Cannot remove kernel in use.</source>
-        <translation type="unfinished"/>
+        <source>Similar kernels that can be removed:</source>
+        <translation>მსგავსი ბირთვები, რომლებიც შეიძლება, წაიშალოს:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1370"/>
+        <location filename="../mainwindow.cpp" line="1327"/>
+        <source>Other kernels that can be removed:</source>
+        <translation>სხვა ბირთვები, რომლებიც შეიძლება, წაიშალოს</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1330"/>
+        <source>&lt;b&gt;Nothing to remove.&lt;/b&gt; Cannot remove kernel in use.</source>
+        <translation>&lt;b&gt;წასაშლელი არაფერია.&lt;/b&gt; ბირთვს, რომელიც გამოიყენება, ვერ წაშლით.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1374"/>
         <source>Info</source>
         <translation>ინფორმაცია</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1370"/>
+        <location filename="../mainwindow.cpp" line="1374"/>
         <source>No unused network drivers found to remove.</source>
-        <translation type="unfinished"/>
+        <translation>წასაშლელი გამოუყენებელი ქსელის დრაივერები აღმოჩენილი არაა.</translation>
     </message>
 </context>
 <context>
@@ -407,7 +407,7 @@
     <message>
         <location filename="../main.cpp" line="63"/>
         <source>Quick safe removal of old files</source>
-        <translation type="unfinished"/>
+        <translation>ძველი ფაილების სწრაფი და უსაფრთხო წაშლა</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="89"/>
@@ -418,12 +418,12 @@
     <message>
         <location filename="../main.cpp" line="90"/>
         <source>You seem to be logged in as root, please log out and log in as normal user to use this program.</source>
-        <translation type="unfinished"/>
+        <translation>როგორც ჩანს, root-ით ბრძანდებით შესული. ამ პროგრამის გამოსაყენებლად გადით, და შემოდით ჩვეულებრივი მომხმარებლით.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="98"/>
         <source>You must run this program with admin access.</source>
-        <translation type="unfinished"/>
+        <translation>ეს პროგრამა ადმინისტრატორის წვდომით უნდა გაუშვათ.</translation>
     </message>
 </context>
 </TS>
