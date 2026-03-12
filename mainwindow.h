@@ -55,8 +55,11 @@ private:
     QString currentUser;
     bool isArchLinux {false};
     bool suppressUserSwitch {false};
-    QString cmdOut(const QString &cmd, bool asRoot = false, bool quiet = false);
-    QString cmdOutAsRoot(const QString &cmd, bool quiet = false);
+    QString cmdOut(const QString &cmd, bool quiet = false);
+    bool helperExec(const QString &cmd, const QStringList &args = {}, bool quiet = false, QString *output = nullptr);
+    QString helperOut(const QString &cmd, const QStringList &args = {}, bool quiet = false);
+    quint64 helperDuSize(const QString &path, bool quiet = false);
+    static quint64 sumKiB(const QString &output);
 
     static void addGroupCheckbox(QLayout *layout, const QStringList &package, const QString &name, QStringList *list);
     static void selectRadioButton(class QGroupBox *groupbox, const QButtonGroup *group, int id);

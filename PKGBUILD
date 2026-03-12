@@ -35,7 +35,7 @@ package() {
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-cleanup/locale/" 2>/dev/null || true
 
     install -dm755 "${pkgdir}/usr/lib/mx-cleanup"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-cleanup/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-cleanup/helper"
     install -Dm755 scripts/helper-terminal-keep-open "${pkgdir}/usr/lib/mx-cleanup/helper-terminal-keep-open"
 
     install -Dm644 scripts/org.mxlinux.pkexec.mx-cleanup-helper.policy \
