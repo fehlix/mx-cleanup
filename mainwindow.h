@@ -31,6 +31,12 @@ namespace Ui
 class MainWindow;
 }
 
+enum class QuietMode
+{
+    No,
+    Yes,
+};
+
 class MainWindow : public QDialog
 {
     Q_OBJECT
@@ -55,12 +61,13 @@ private:
     QString currentUser;
     bool isArchLinux {false};
     bool suppressUserSwitch {false};
-    QString cmdOut(const QString &cmd, bool quiet = false);
-    bool helperProc(const QStringList &helperArgs, bool quiet = false, QString *output = nullptr);
-    bool helperExec(const QString &cmd, const QStringList &args = {}, bool quiet = false, QString *output = nullptr);
-    QString helperOut(const QString &cmd, const QStringList &args = {}, bool quiet = false);
-    bool helperFlatpakCleanup(const QString &user, bool quiet = false);
-    quint64 helperDuSize(const QString &path, bool quiet = false);
+    QString cmdOut(const QString &cmd, QuietMode quiet = QuietMode::No);
+    bool helperProc(const QStringList &helperArgs, QuietMode quiet = QuietMode::No, QString *output = nullptr);
+    bool helperExec(const QString &cmd, const QStringList &args = {}, QuietMode quiet = QuietMode::No,
+                    QString *output = nullptr);
+    QString helperOut(const QString &cmd, const QStringList &args = {}, QuietMode quiet = QuietMode::No);
+    bool helperFlatpakCleanup(const QString &user, QuietMode quiet = QuietMode::No);
+    quint64 helperDuSize(const QString &path, QuietMode quiet = QuietMode::No);
     static quint64 sumKiB(const QString &output);
 
     static void addGroupCheckbox(QLayout *layout, const QStringList &package, const QString &name, QStringList *list);

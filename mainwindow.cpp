@@ -134,7 +134,7 @@ void MainWindow::removeManuals()
     QProgressDialog prog(tr("Removing packages, please wait"), QString(), 0, 0, this);
     prog.show();
     QApplication::processEvents();
-    helperExec("apt-get", QStringList {"purge", "-y"} + packageList, true);
+    helperExec("apt-get", QStringList {"purge", "-y"} + packageList, QuietMode::Yes);
     ui->tabWidget->setEnabled(true);
 }
 
@@ -190,7 +190,7 @@ void MainWindow::setup()
 
     suppressUserSwitch = true;
 
-    currentUser = cmdOut("logname", true);
+    currentUser = cmdOut("logname", QuietMode::Yes);
 
     ui->pushApply->setDisabled(true);
     ui->checkCache->setChecked(true);
@@ -199,7 +199,7 @@ void MainWindow::setup()
     ui->radioOldLogs->setChecked(true);
     ui->radioSelectedUser->setChecked(true);
 
-    const QString users = cmdOut("lslogins --noheadings -u -o user | grep -vw root", true).trimmed();
+    const QString users = cmdOut("lslogins --noheadings -u -o user | grep -vw root", QuietMode::Yes).trimmed();
 
     {
         QSignalBlocker blocker(ui->comboUserClean);
@@ -321,7 +321,8 @@ void MainWindow::initializeSettingsForUser(const QString &user)
             const QString effectiveGroup = ownerGroup.isEmpty() ? owner : ownerGroup;
             if (QFile::exists(filePath)) {
                 helperExec("install",
-                           {"-m", "600", "-o", owner, "-g", effectiveGroup, filePath, shadowSettingsPath}, true);
+                           {"-m", "600", "-o", owner, "-g", effectiveGroup, filePath, shadowSettingsPath},
+                           QuietMode::Yes);
             }
             if (QFile::exists(shadowSettingsPath)) {
                 settings = std::make_unique<QSettings>(shadowSettingsPath, QSettings::IniFormat);
@@ -356,9 +357,9 @@ void MainWindow::ensureSettingsOwnership(const QString &user, const QString &tar
 
     const QString primaryGroup = primaryGroupForUser(user);
     const QString ownerGroup = primaryGroup.isEmpty() ? user : primaryGroup;
-    helperExec("chown", {user + ":" + ownerGroup, settingsDir}, true);
+    helperExec("chown", {user + ":" + ownerGroup, settingsDir}, QuietMode::Yes);
     if (!targetPath.isEmpty() && QFile::exists(targetPath)) {
-        helperExec("chown", {user + ":" + ownerGroup, targetPath}, true);
+        helperExec("chown", {user + ":" + ownerGroup, targetPath}, QuietMode::Yes);
     }
 }
 
@@ -665,7 +666,8 @@ void MainWindow::loadOptions(bool settingsPreloaded)
 
     // Logs older than...
     QString ctime = cmdOut(
-        "grep 'find /var/log' " + file_name + R"( | grep -Eo '\-ctime \+[0-9]{1,3}' | cut -f2 -d' ')", true);
+        "grep 'find /var/log' " + file_name + R"( | grep -Eo '\-ctime \+[0-9]{1,3}' | cut -f2 -d' ')",
+        QuietMode::Yes);
     ui->spinBoxLogs->setValue(ctime.toInt());
 
     // Trash
@@ -687,7 +689,7 @@ void MainWindow::loadOptions(bool settingsPreloaded)
 
     // Trash older than...
     ctime = cmdOut("grep 'find /home/' " + file_name + R"( | grep -Eo '\-ctime \+[0-9]{1,3}' | cut -f2 -d' ')",
-                   true);
+                   QuietMode::Yes);
     ui->spinBoxTrash->setValue(ctime.toInt());
 }
 
@@ -697,9 +699,9 @@ void MainWindow::saveSchedule(const QString &cmd_str, const QString &period)
     const QString cronBase = cronEntryBase(period);
     const QString cronTarget = cronEntryPath(period, true);
 
-    helperExec("rm", {"-f", cronBase}, true);
+    helperExec("rm", {"-f", cronBase}, QuietMode::Yes);
     if (cronTarget != cronBase) {
-        helperExec("rm", {"-f", cronTarget}, true);
+        helperExec("rm", {"-f", cronTarget}, QuietMode::Yes);
     }
 
     QString scriptTarget = cronTarget;
@@ -708,9 +710,9 @@ void MainWindow::saveSchedule(const QString &cmd_str, const QString &period)
         scriptTarget = scriptFilePath(true);
         const QString scriptBase = scriptFileBase();
 
-        helperExec("rm", {"-f", scriptBase}, true);
+        helperExec("rm", {"-f", scriptBase}, QuietMode::Yes);
         if (scriptTarget != scriptBase) {
-            helperExec("rm", {"-f", scriptTarget}, true);
+            helperExec("rm", {"-f", scriptTarget}, QuietMode::Yes);
         }
 
         QTemporaryFile tempCron;
@@ -721,9 +723,9 @@ void MainWindow::saveSchedule(const QString &cmd_str, const QString &period)
         }
         tempCron.write(QString("@reboot root %1\n").arg(scriptTarget).toUtf8());
         tempCron.close();
-        helperExec("mv", {tempCron.fileName(), cronTarget}, true);
-        helperExec("chown", {"root:root", cronTarget}, true);
-        helperExec("chmod", {"0644", cronTarget}, true);
+        helperExec("mv", {tempCron.fileName(), cronTarget}, QuietMode::Yes);
+        helperExec("chown", {"root:root", cronTarget}, QuietMode::Yes);
+        helperExec("chmod", {"0644", cronTarget}, QuietMode::Yes);
     }
 
     QTemporaryFile tempFile;
@@ -739,9 +741,9 @@ void MainWindow::saveSchedule(const QString &cmd_str, const QString &period)
     out << "#\n\n";
     out << cmd_str;
     tempFile.close();
-    helperExec("mv", {tempFile.fileName(), scriptTarget}, true);
-    helperExec("chmod", {"0755", scriptTarget}, true);
-    helperExec("chown", {"root:root", scriptTarget}, true);
+    helperExec("mv", {tempFile.fileName(), scriptTarget}, QuietMode::Yes);
+    helperExec("chmod", {"0755", scriptTarget}, QuietMode::Yes);
+    helperExec("chown", {"root:root", scriptTarget}, QuietMode::Yes);
 }
 
 void MainWindow::saveSettings()
@@ -806,8 +808,9 @@ void MainWindow::saveSettings()
         tempFile.close();
 
         const QString ownerGroup = targetGroupName.isEmpty() ? user : targetGroupName;
-        helperExec("install", {"-d", "-m", "755", "-o", user, "-g", ownerGroup, dirPath}, true);
-        helperExec("install", {"-m", "644", "-o", user, "-g", ownerGroup, tempFile.fileName(), targetPath}, true);
+        helperExec("install", {"-d", "-m", "755", "-o", user, "-g", ownerGroup, dirPath}, QuietMode::Yes);
+        helperExec("install", {"-m", "644", "-o", user, "-g", ownerGroup, tempFile.fileName(), targetPath},
+                   QuietMode::Yes);
 
         QFile::remove(tempFile.fileName());
 
@@ -821,7 +824,7 @@ void MainWindow::saveSettings()
         if (getuid() == 0) {
             qDebug().noquote() << "Creating settings directory as root:" << dirPath;
             const QString ownerGroup = targetGroupName.isEmpty() ? user : targetGroupName;
-            helperExec("install", {"-d", "-m", "755", "-o", user, "-g", ownerGroup, dirPath}, true);
+            helperExec("install", {"-d", "-m", "755", "-o", user, "-g", ownerGroup, dirPath}, QuietMode::Yes);
         } else {
             qDebug().noquote() << "Creating settings directory:" << dirPath;
             dir.mkpath(dirPath);
@@ -887,7 +890,7 @@ void MainWindow::pushApply_clicked()
 
     // Try to elevate privileges if needed
     if (getuid() != 0) {
-        if (!helperExec("true", {}, true)) {
+        if (!helperExec("true", {}, QuietMode::Yes)) {
             QMessageBox::critical(this, tr("Error"), tr("Failed to elevate privileges"));
             setCursor(QCursor(Qt::ArrowCursor));
             setEnabled(true);
@@ -925,7 +928,7 @@ void MainWindow::pushApply_clicked()
                     args << "-atime" << days << "-mtime" << days;
                 }
                 args << "-type" << "f" << "-printf" << "%k\n";
-                cacheKiB = sumKiB(helperOut("find", args, true));
+                cacheKiB = sumKiB(helperOut("find", args, QuietMode::Yes));
             }
         } else {
             cacheKiB = cmdOut(findCmd).toULongLong();
@@ -945,7 +948,7 @@ void MainWindow::pushApply_clicked()
                         args << "-atime" << days << "-mtime" << days;
                     }
                     args << "-delete";
-                    helperExec("find", args, true);
+                    helperExec("find", args, QuietMode::Yes);
                 }
             } else {
                 cmdOut(cache);
@@ -973,7 +976,7 @@ void MainWindow::pushApply_clicked()
                     args << "-atime" << days << "-mtime" << days;
                 }
                 args << "-printf" << "%k\n";
-                thumbnailsKiB = sumKiB(helperOut("find", args, true));
+                thumbnailsKiB = sumKiB(helperOut("find", args, QuietMode::Yes));
             }
         } else {
             thumbnailsKiB = cmdOut(findThumbsCmd).toULongLong();
@@ -990,7 +993,7 @@ void MainWindow::pushApply_clicked()
                         args << "-atime" << days << "-mtime" << days;
                     }
                     args << "-delete";
-                    helperExec("find", args, true);
+                    helperExec("find", args, QuietMode::Yes);
                 }
             } else {
                 cmdOut(thumbnails);
@@ -1022,27 +1025,27 @@ void MainWindow::pushApply_clicked()
 
             if (command == userSizeCmd) {
                 const QString path = QString("/home/%1/.local/share/flatpak/").arg(selectedUser);
-                return QString::number(helperDuSize(path, true));
+                return QString::number(helperDuSize(path, QuietMode::Yes));
             }
 
-            QString output = helperOut("pgrep", {"-a", "flatpak"}, true);
+            QString output = helperOut("pgrep", {"-a", "flatpak"}, QuietMode::Yes);
             const QStringList activeFlatpak
                 = output.split('\n', Qt::SkipEmptyParts).filter(QRegularExpression("^(?!.*flatpak-s).*$"));
             if (!activeFlatpak.isEmpty()) {
                 return output.trimmed();
             }
 
-            helperFlatpakCleanup(selectedUser, true);
+            helperFlatpakCleanup(selectedUser, QuietMode::Yes);
             return QString();
         };
 
         quint64 userBefore = execFlatpakScoped(userSizeCmd).toULongLong();
-        quint64 systemBefore = helperDuSize("/var/lib/flatpak/", true);
+        quint64 systemBefore = helperDuSize("/var/lib/flatpak/", QuietMode::Yes);
         if (!ui->radioReboot->isChecked()) {
             execFlatpakScoped(flatpakCleanupCheckCmd);
         }
         quint64 userAfter = execFlatpakScoped(userSizeCmd).toULongLong();
-        quint64 systemAfter = helperDuSize("/var/lib/flatpak/", true);
+        quint64 systemAfter = helperDuSize("/var/lib/flatpak/", QuietMode::Yes);
 
         quint64 userDelta = (userBefore > userAfter) ? userBefore - userAfter : 0;
         quint64 systemDelta = (systemBefore > systemAfter) ? systemBefore - systemAfter : 0;
@@ -1082,19 +1085,20 @@ void MainWindow::pushApply_clicked()
 
         if (!cleanCmd.isEmpty()) {
             const QString cacheDir = isArchLinux ? "/var/cache/pacman/pkg/" : "/var/cache/apt/archives/";
-            quint64 before_size = helperDuSize(cacheDir, true);
+            quint64 before_size = helperDuSize(cacheDir, QuietMode::Yes);
 
             if (!ui->radioReboot->isChecked()) {
                 if (isArchLinux) {
                     helperExec("pacman", ui->radioAutoClean->isChecked() ? QStringList {"-Sc", "--noconfirm"}
                                                                           : QStringList {"-Scc", "--noconfirm"},
-                               true);
+                               QuietMode::Yes);
                 } else {
-                    helperExec("apt-get", {ui->radioAutoClean->isChecked() ? "autoclean" : "clean"}, true);
+                    helperExec("apt-get", {ui->radioAutoClean->isChecked() ? "autoclean" : "clean"},
+                               QuietMode::Yes);
                 }
             }
 
-            quint64 after_size = helperDuSize(cacheDir, true);
+            quint64 after_size = helperDuSize(cacheDir, QuietMode::Yes);
             addToTotal(cacheLabel, before_size > after_size ? before_size - after_size : 0);
             addCommandToSchedule(cleanCmd);
         }
@@ -1102,8 +1106,9 @@ void MainWindow::pushApply_clicked()
 
     if (ui->checkPurge->isChecked()) {
         const QString purgeCmd = "dpkg -l | awk '/^rc/ { print $2 }' | xargs -r apt-get purge -y";
-        quint64 before_size = helperDuSize("/var/lib/dpkg/info/", true);
-        const QStringList residualPackages = cmdOut("dpkg-query -W -f='${db:Status-Abbrev}\t${Package}\n'", true)
+        quint64 before_size = helperDuSize("/var/lib/dpkg/info/", QuietMode::Yes);
+        const QStringList residualPackages
+            = cmdOut("dpkg-query -W -f='${db:Status-Abbrev}\t${Package}\n'", QuietMode::Yes)
                                                  .split('\n', Qt::SkipEmptyParts);
         QStringList packagesToPurge;
         for (const QString &line : residualPackages) {
@@ -1113,10 +1118,10 @@ void MainWindow::pushApply_clicked()
         }
 
         if (!ui->radioReboot->isChecked() && !packagesToPurge.isEmpty()) {
-            helperExec("apt-get", QStringList {"purge", "-y"} + packagesToPurge, true);
+            helperExec("apt-get", QStringList {"purge", "-y"} + packagesToPurge, QuietMode::Yes);
         }
 
-        quint64 after_size = helperDuSize("/var/lib/dpkg/info/", true);
+        quint64 after_size = helperDuSize("/var/lib/dpkg/info/", QuietMode::Yes);
         addToTotal("apt-purge", before_size > after_size ? before_size - after_size : 0);
         addCommandToSchedule(purgeCmd);
     }
@@ -1135,13 +1140,13 @@ void MainWindow::pushApply_clicked()
             }
             QStringList sizeArgs = args;
             sizeArgs << "-type" << "f" << "-printf" << "%k\n";
-            quint64 logsKiB = sumKiB(helperOut("find", sizeArgs, true));
+            quint64 logsKiB = sumKiB(helperOut("find", sizeArgs, QuietMode::Yes));
             addToTotal("logs-old", logsKiB);
             logs = R"(find /var/log \( -name "*.gz" -o -name "*.old" -o -name "*.[0-9]" -o -name "*.[0-9].log" \))"
                    + time + " -type f -delete 2>/dev/null";
             if (!ui->radioReboot->isChecked()) {
                 args << "-type" << "f" << "-delete";
-                helperExec("find", args, true);
+                helperExec("find", args, QuietMode::Yes);
             }
         } else if (ui->radioAllLogs->isChecked()) {
             QStringList args {"/var/log", "-type", "f"};
@@ -1151,12 +1156,12 @@ void MainWindow::pushApply_clicked()
             }
             QStringList sizeArgs = args;
             sizeArgs << "-printf" << "%k\n";
-            quint64 logsKiB = sumKiB(helperOut("find", sizeArgs, true));
+            quint64 logsKiB = sumKiB(helperOut("find", sizeArgs, QuietMode::Yes));
             addToTotal("logs-all", logsKiB);
             logs = "find /var/log -type f" + time + R"( -exec sh -c "echo > '{}'" \;)"; // empty the logs
             if (!ui->radioReboot->isChecked()) {
                 args << "-exec" << "truncate" << "-s" << "0" << "{}" << "+";
-                helperExec("find", args, true);
+                helperExec("find", args, QuietMode::Yes);
             }
         }
     }
@@ -1185,7 +1190,7 @@ void MainWindow::pushApply_clicked()
                 args << "-ctime" << days << "-atime" << days;
             }
             args << "-printf" << "%k\n";
-            trashKiB = sumKiB(helperOut("find", args, true));
+            trashKiB = sumKiB(helperOut("find", args, QuietMode::Yes));
         } else {
             trashKiB = cmdOut(findSizeCmd).toULongLong();
         }
@@ -1205,7 +1210,7 @@ void MainWindow::pushApply_clicked()
                     args << "-ctime" << days << "-atime" << days;
                 }
                 args << "-delete";
-                helperExec("find", args, true);
+                helperExec("find", args, QuietMode::Yes);
             } else {
                 cmdOut(trash);
             }
@@ -1225,7 +1230,7 @@ void MainWindow::pushApply_clicked()
             targets << baseTarget;
         }
         for (const auto &path : targets) {
-            helperExec("rm", {"-f", path}, true);
+            helperExec("rm", {"-f", path}, QuietMode::Yes);
         }
     };
 
@@ -1241,7 +1246,7 @@ void MainWindow::pushApply_clicked()
             targets << baseTarget;
         }
         for (const auto &path : targets) {
-            helperExec("rm", {"-f", path}, true);
+            helperExec("rm", {"-f", path}, QuietMode::Yes);
         }
     };
 
@@ -1349,9 +1354,9 @@ void MainWindow::startPreferredApp(const QStringList &apps)
     }
 }
 
-QString MainWindow::cmdOut(const QString &cmd, bool quiet)
+QString MainWindow::cmdOut(const QString &cmd, QuietMode quiet)
 {
-    if (!quiet) {
+    if (quiet == QuietMode::No) {
         qDebug().noquote() << cmd;
     }
     QProcess proc;
@@ -1363,9 +1368,9 @@ QString MainWindow::cmdOut(const QString &cmd, bool quiet)
     return proc.readAll().trimmed();
 }
 
-bool MainWindow::helperProc(const QStringList &helperArgs, bool quiet, QString *output)
+bool MainWindow::helperProc(const QStringList &helperArgs, QuietMode quiet, QString *output)
 {
-    if (!quiet) {
+    if (quiet == QuietMode::No) {
         qDebug().noquote() << "helper" << helperArgs;
     }
 
@@ -1410,32 +1415,32 @@ bool MainWindow::helperProc(const QStringList &helperArgs, bool quiet, QString *
     if (output) {
         *output = standardOutput;
     }
-    if (!quiet && !standardError.isEmpty()) {
+    if (quiet == QuietMode::No && !standardError.isEmpty()) {
         qWarning().noquote() << standardError;
     }
     return proc.exitStatus() == QProcess::NormalExit && proc.exitCode() == 0;
 }
 
-bool MainWindow::helperExec(const QString &cmd, const QStringList &args, bool quiet, QString *output)
+bool MainWindow::helperExec(const QString &cmd, const QStringList &args, QuietMode quiet, QString *output)
 {
     QStringList helperArgs {"exec", cmd};
     helperArgs += args;
     return helperProc(helperArgs, quiet, output);
 }
 
-QString MainWindow::helperOut(const QString &cmd, const QStringList &args, bool quiet)
+QString MainWindow::helperOut(const QString &cmd, const QStringList &args, QuietMode quiet)
 {
     QString output;
     helperExec(cmd, args, quiet, &output);
     return output;
 }
 
-bool MainWindow::helperFlatpakCleanup(const QString &user, bool quiet)
+bool MainWindow::helperFlatpakCleanup(const QString &user, QuietMode quiet)
 {
     return helperProc({"flatpak-cleanup-user", user}, quiet);
 }
 
-quint64 MainWindow::helperDuSize(const QString &path, bool quiet)
+quint64 MainWindow::helperDuSize(const QString &path, QuietMode quiet)
 {
     bool ok {false};
     const quint64 size = helperOut("du", {"-s", path}, quiet).section('\t', 0, 0).trimmed().toULongLong(&ok);
@@ -1543,7 +1548,7 @@ void MainWindow::pushRTLremove_clicked()
             if dpkg -l broadcom-sta-dkms 2>/dev/null | grep -q ^ii; then
                 echo -n broadcom-sta-dkms
             fi
-    fi)", true);  // Run as user, quiet mode
+    fi)", QuietMode::Yes);  // Run as user, quiet mode
 
     dumpList = dumpList.trimmed();
     if (dumpList.isEmpty()) {
