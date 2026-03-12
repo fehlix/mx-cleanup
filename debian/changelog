@@ -2,6 +2,8 @@ mx-cleanup (26.03.1) mx; urgency=medium
 
   * Show Help and License in an internal Qt window
   * Replace the shell helper with a binary helper
+  * Improve manual removal progress
+  * Block closing during manual removal
 
  -- Adrian <adrian@mxlinux.org>  Wed, 11 Mar 2026 19:30:00 -0400
 
