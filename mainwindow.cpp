@@ -136,10 +136,19 @@ void MainWindow::removeManuals()
     }
 
     ui->tabWidget->setDisabled(true);
-    QProgressDialog prog(tr("Removing packages, please wait"), QString(), 0, 0, this);
+    QProgressDialog prog(tr("Removing packages, please wait"), QString(), 0, packageList.size(), this);
+    prog.setMinimumDuration(0);
+    prog.setValue(0);
     prog.show();
     QApplication::processEvents();
-    helperExec("apt-get", QStringList {"purge", "-y"} + packageList, QuietMode::Yes);
+
+    for (int index = 0; index < packageList.size(); ++index) {
+        prog.setLabelText(tr("Removing packages, please wait"));
+        helperExec("apt-get", {"purge", "-y", packageList.at(index)}, QuietMode::Yes);
+        prog.setValue(index + 1);
+        QApplication::processEvents();
+    }
+
     ui->tabWidget->setEnabled(true);
 }
 
