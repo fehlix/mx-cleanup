@@ -1328,7 +1328,7 @@ void MainWindow::pushAbout_clicked()
 void MainWindow::pushHelp_clicked()
 {
     const QString url {"/usr/share/doc/mx-cleanup/mx-cleanup.html"};
-    displayDoc(url, tr("%1 Help").arg(this->windowTitle()));
+    displayHelpDoc(url, tr("%1 Help").arg(this->windowTitle()));
 }
 
 void MainWindow::pushUsageAnalyzer_clicked()
