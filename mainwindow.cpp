@@ -101,6 +101,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (manualRemovalInProgress) {
+        event->ignore();
+        return;
+    }
+
+    QDialog::closeEvent(event);
+}
+
 void MainWindow::removeManuals()
 {
     QSettings defaultlocale("/etc/default/locale", QSettings::NativeFormat);
@@ -135,6 +145,8 @@ void MainWindow::removeManuals()
         return;
     }
 
+    manualRemovalInProgress = true;
+    ui->pushCancel->setDisabled(true);
     ui->tabWidget->setDisabled(true);
     QProgressDialog prog(tr("Removing packages, please wait"), QString(), 0, packageList.size(), this);
     prog.setMinimumDuration(0);
@@ -150,6 +162,8 @@ void MainWindow::removeManuals()
     }
 
     ui->tabWidget->setEnabled(true);
+    ui->pushCancel->setEnabled(true);
+    manualRemovalInProgress = false;
 }
 
 void MainWindow::addGroupCheckbox(QLayout *layout, const QStringList &packages, const QString &name, QStringList *list)

@@ -22,6 +22,7 @@
 #pragma once
 
 #include <QButtonGroup>
+#include <QCloseEvent>
 #include <QMessageBox>
 #include <QSettings>
 #include <memory>
@@ -45,6 +46,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private slots:
     void pushAbout_clicked();
     void pushApply_clicked();
@@ -60,6 +64,7 @@ private:
     QString shadowSettingsPath;
     QString currentUser;
     bool isArchLinux {false};
+    bool manualRemovalInProgress {false};
     bool suppressUserSwitch {false};
     QString cmdOut(const QString &cmd, QuietMode quiet = QuietMode::No);
     bool helperProc(const QStringList &helperArgs, QuietMode quiet = QuietMode::No, QString *output = nullptr);
