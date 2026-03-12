@@ -1,3 +1,10 @@
+mx-cleanup (26.03.1) mx; urgency=medium
+
+  * Show Help and License in an internal Qt window
+  * Replace the shell helper with a binary helper
+
+ -- Adrian <adrian@mxlinux.org>  Wed, 11 Mar 2026 19:30:00 -0400
+
 mx-cleanup (26.03) mx; urgency=medium
 
   * Fix log cleanup running immediately when scheduled for reboot

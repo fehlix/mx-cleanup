@@ -1404,7 +1404,10 @@ bool MainWindow::helperExec(const QString &cmd, const QStringList &args, bool qu
         return false;
     }
 
-    proc.waitForFinished(-1);
+    QEventLoop loop;
+    connect(&proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), &loop, &QEventLoop::quit);
+    loop.exec();
+
     const QString standardOutput = QString::fromLocal8Bit(proc.readAllStandardOutput()).trimmed();
     const QString standardError = QString::fromLocal8Bit(proc.readAllStandardError()).trimmed();
     if (output) {
