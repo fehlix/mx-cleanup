@@ -25,6 +25,7 @@
 #include <QFileInfo>
 #include <QHash>
 #include <QProcess>
+#include <QRegularExpression>
 
 #include <cstdio>
 
@@ -65,11 +66,24 @@ void printError(const QString &message)
         {"pacman", {"/usr/bin/pacman"}},
         {"pgrep", {"/usr/bin/pgrep", "/bin/pgrep"}},
         {"rm", {"/usr/bin/rm", "/bin/rm"}},
-        {"runuser", {"/usr/sbin/runuser", "/sbin/runuser", "/usr/bin/runuser"}},
         {"true", {"/usr/bin/true", "/bin/true"}},
         {"truncate", {"/usr/bin/truncate", "/bin/truncate"}},
     };
     return commands;
+}
+
+[[nodiscard]] QString resolveBinary(const QStringList &candidates);
+
+[[nodiscard]] QString resolveRunuserBinary()
+{
+    static const QStringList candidates {"/usr/sbin/runuser", "/sbin/runuser", "/usr/bin/runuser"};
+    return resolveBinary(candidates);
+}
+
+[[nodiscard]] QString resolveFlatpakBinary()
+{
+    static const QStringList candidates {"/usr/bin/flatpak", "/bin/flatpak"};
+    return resolveBinary(candidates);
 }
 
 [[nodiscard]] QString resolveBinary(const QStringList &candidates)
@@ -130,6 +144,31 @@ void printError(const QString &message)
 
     return relayResult(runProcess(resolvedCommand, args));
 }
+
+[[nodiscard]] int runFlatpakCleanupForUser(const QString &user)
+{
+    static const QRegularExpression safeUserPattern(QStringLiteral("^[A-Za-z0-9._-]+$"));
+    if (user.isEmpty() || !safeUserPattern.match(user).hasMatch()) {
+        printError(QString("Invalid username: %1").arg(user));
+        return 1;
+    }
+
+    const QString runuserBinary = resolveRunuserBinary();
+    if (runuserBinary.isEmpty()) {
+        printError(QStringLiteral("Command is not available: runuser"));
+        return 127;
+    }
+
+    const QString flatpakBinary = resolveFlatpakBinary();
+    if (flatpakBinary.isEmpty()) {
+        printError(QStringLiteral("Command is not available: flatpak"));
+        return 127;
+    }
+
+    return relayResult(runProcess(runuserBinary,
+                                  {"-u", user, "--", flatpakBinary, "uninstall", "--unused",
+                                   "--delete-data", "--noninteractive"}));
+}
 }
 
 int main(int argc, char *argv[])
@@ -149,6 +188,14 @@ int main(int argc, char *argv[])
             return 1;
         }
         return runAllowedCommand(arguments.at(1), arguments.mid(2));
+    }
+
+    if (action == "flatpak-cleanup-user") {
+        if (arguments.size() != 2) {
+            printError(QStringLiteral("flatpak-cleanup-user requires exactly one username"));
+            return 1;
+        }
+        return runFlatpakCleanupForUser(arguments.at(1));
     }
 
     printError(QString("Unsupported helper action: %1").arg(action));

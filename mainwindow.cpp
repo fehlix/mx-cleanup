@@ -1032,9 +1032,7 @@ void MainWindow::pushApply_clicked()
                 return output.trimmed();
             }
 
-            helperExec("runuser", {"-u", selectedUser, "--", "flatpak", "uninstall", "--unused",
-                                   "--delete-data", "--noninteractive"},
-                       true);
+            helperFlatpakCleanup(selectedUser, true);
             return QString();
         };
 
@@ -1365,21 +1363,20 @@ QString MainWindow::cmdOut(const QString &cmd, bool quiet)
     return proc.readAll().trimmed();
 }
 
-bool MainWindow::helperExec(const QString &cmd, const QStringList &args, bool quiet, QString *output)
+bool MainWindow::helperProc(const QStringList &helperArgs, bool quiet, QString *output)
 {
     if (!quiet) {
-        qDebug().noquote() << "helper exec" << cmd << args;
+        qDebug().noquote() << "helper" << helperArgs;
     }
 
     QProcess proc;
     proc.setProcessChannelMode(QProcess::SeparateChannels);
 
     const QString helper = "/usr/lib/" + QApplication::applicationName() + "/helper";
-    QStringList helperArgs {"exec", cmd};
-    helperArgs += args;
+    QStringList programArgs = helperArgs;
 
     if (getuid() == 0) {
-        proc.start(helper, helperArgs);
+        proc.start(helper, programArgs);
     } else {
         QString elevate;
         if (QFile::exists("/usr/bin/pkexec")) {
@@ -1393,8 +1390,8 @@ bool MainWindow::helperExec(const QString &cmd, const QStringList &args, bool qu
             }
             return false;
         }
-        helperArgs.prepend(helper);
-        proc.start(elevate, helperArgs);
+        programArgs.prepend(helper);
+        proc.start(elevate, programArgs);
     }
 
     if (!proc.waitForStarted()) {
@@ -1419,11 +1416,23 @@ bool MainWindow::helperExec(const QString &cmd, const QStringList &args, bool qu
     return proc.exitStatus() == QProcess::NormalExit && proc.exitCode() == 0;
 }
 
+bool MainWindow::helperExec(const QString &cmd, const QStringList &args, bool quiet, QString *output)
+{
+    QStringList helperArgs {"exec", cmd};
+    helperArgs += args;
+    return helperProc(helperArgs, quiet, output);
+}
+
 QString MainWindow::helperOut(const QString &cmd, const QStringList &args, bool quiet)
 {
     QString output;
     helperExec(cmd, args, quiet, &output);
     return output;
+}
+
+bool MainWindow::helperFlatpakCleanup(const QString &user, bool quiet)
+{
+    return helperProc({"flatpak-cleanup-user", user}, quiet);
 }
 
 quint64 MainWindow::helperDuSize(const QString &path, bool quiet)

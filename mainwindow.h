@@ -56,8 +56,10 @@ private:
     bool isArchLinux {false};
     bool suppressUserSwitch {false};
     QString cmdOut(const QString &cmd, bool quiet = false);
+    bool helperProc(const QStringList &helperArgs, bool quiet = false, QString *output = nullptr);
     bool helperExec(const QString &cmd, const QStringList &args = {}, bool quiet = false, QString *output = nullptr);
     QString helperOut(const QString &cmd, const QStringList &args = {}, bool quiet = false);
+    bool helperFlatpakCleanup(const QString &user, bool quiet = false);
     quint64 helperDuSize(const QString &path, bool quiet = false);
     static quint64 sumKiB(const QString &output);
 
