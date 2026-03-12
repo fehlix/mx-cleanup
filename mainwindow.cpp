@@ -130,6 +130,11 @@ void MainWindow::removeManuals()
         return;
     }
 
+    if (getuid() != 0 && !helperExec("true", {}, QuietMode::Yes)) {
+        QMessageBox::critical(this, tr("Error"), tr("Failed to elevate privileges"));
+        return;
+    }
+
     ui->tabWidget->setDisabled(true);
     QProgressDialog prog(tr("Removing packages, please wait"), QString(), 0, 0, this);
     prog.show();

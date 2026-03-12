@@ -273,7 +273,7 @@
         <location filename="../mainwindow.cpp" line="746"/>
         <location filename="../mainwindow.cpp" line="912"/>
         <source>Error</source>
-        <translation>Current kernel doesn&apos;t support selected compression algorithm, please edit the configuration file and select a different algorithm.</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="204"/>
@@ -413,7 +413,7 @@
         <location filename="../main.cpp" line="89"/>
         <location filename="../main.cpp" line="97"/>
         <source>Error</source>
-        <translation>Current kernel doesn&apos;t support selected compression algorithm, please edit the configuration file and select a different algorithm.</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="90"/>
